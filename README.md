@@ -12,3 +12,9 @@ A simple app to manage homework
 - [twbs/bootstrap (v4.5.7)](https://github.com/twbs/bootstrap/releases/tag/v3.3.6)
 - [FezVrasta/bootstrap-material-design (v0.5.8)](https://github.com/FezVrasta/bootstrap-material-design/releases/tag/v0.5.8)
 - [barryvdh/laravel-debugbar (v2.2)](https://github.com/barryvdh/laravel-debugbar/releases/tag/v2.2.0)
+
+## TODO
+- Management
+ - [ ] Users
+ - [ ] Permissions
+ - [ ] Roles
