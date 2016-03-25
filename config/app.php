@@ -151,6 +151,7 @@ return [
 		Artesaos\Defender\Providers\DefenderServiceProvider::class,
 		Collective\Html\HtmlServiceProvider::class,
 		Unisharp\Ckeditor\ServiceProvider::class,
+		Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
@@ -200,8 +201,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 		'Defender' 	=> \Artesaos\Defender\Facades\Defender::class,
-		'Form' => Collective\Html\FormFacade::class,
-		'Html' => Collective\Html\HtmlFacade::class,
+		'Form' 		=> Collective\Html\FormFacade::class,
+		'Html' 		=> Collective\Html\HtmlFacade::class,
+		'Debugbar' 	=> Barryvdh\Debugbar\Facade::class,
 
     ],
 

@@ -9,7 +9,8 @@
         "laravel/framework": "5.1.*",
         "artesaos/defender": "^0.4.6",
         "laravelcollective/html": "5.1",
-        "unisharp/laravel-ckeditor": "^4.5"
+        "unisharp/laravel-ckeditor": "^4.5",
+        "barryvdh/laravel-debugbar": "^2.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
