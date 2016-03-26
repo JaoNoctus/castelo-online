@@ -1,3 +1,11 @@
+@section ('ads')
+	<center>
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6934296242213124" data-ad-slot="6255245692" data-ad-format="auto"></ins>
+		<script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+	</center>
+@endsection
+
 <html lang="pt-br">
 <head>
 	<meta charset="utf-8"/>
@@ -73,9 +81,12 @@
 			</div><!--/.nav-collapse -->
 		</div>
 	</nav>
+
+	@yield('ads')
 	<div class="container">
 		@yield('content')
 	</div>
+	@yield('ads')
 
 	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
