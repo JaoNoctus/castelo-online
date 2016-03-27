@@ -67,19 +67,34 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="{{ route('atividades') }}">Atividades</a></li>
+					@is ('professor')
+						<li class="dropdown">
+							<a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Atividades <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="{{ route('atividades') }}">Visualizar</a></li>
+								<li><a href="{{ route('atividades.create') }}">Adicionar</a></li>
+							</ul>
+						</li>
+					@else
+						<li><a href="{{ route('atividades') }}">Atividades</a></li>
+					@endis
 					<li><a href="https://drive.google.com/a/studionoctus.com/file/d/0B-cwefcz8AzjZjFYWW1Ndzgyb1E/view" target="_blank">Horários</a></li>
 					<li><a href="https://drive.google.com/open?id=0B-cwefcz8AzjRzE0b2diTlZvaTQ" target="_blank">Caderno Virtual</a></li>
+					@is ('admin')
+						<li class="dropdown">
+							<a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Usuários <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Visualizar</a></li>
+								<li><a href="#">Adicionar</a></li>
+							</ul>
+						</li>
+					@endis
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::check())
 						<li class="dropdown">
 							<a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }} <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								@shield ('atividades.create')
-								<li><a href="{{ route('atividades.create') }}">Adicionar atividade</a></li>
-								@endshield
-								<li class="divider"></li>
 								<li><a href="{{ route('auth.logout.get') }}">Desconectar</a></li>
 							</ul>
 						</li>
@@ -87,11 +102,10 @@
 						<li><a href="{{ route('auth.login.get') }}">Login</a></li>
 					@endif
 				</ul>
-			</div><!--/.nav-collapse -->
+			</div>
 		</div>
 	</nav>
 
-	@yield('ads')
 	<div class="container">
 		@yield('content')
 	</div>
