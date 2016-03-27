@@ -44,3 +44,11 @@ Route::group(['prefix' => 'atividades'], function ()
 
 	Route::get('{id}/destroy', 	['middleware' => ['auth' => 'needsPermission:atividades.destroy'], 	'as' => 'atividades.destroy',	'uses' => 'AtividadesController@destroy']);
 });
+
+/*
+ * Users
+ */
+Route::group(['prefix' => 'users'], function ()
+{
+	# TODO
+});
