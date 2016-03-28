@@ -25,7 +25,6 @@ $disciplinas = array(
 		    <div class="form-group">
 		        {!! Form::label('entrega', 'Data de entrega', ['class' => 'control-label']) !!}
 				{!! Form::date('entrega', $layout['entrega'], ['class' => 'form-control']) !!}
-				<p class="help-block"> Formato: <i><b>Chrome:</b> mes-dia-ano / <b>Outros:</b> ano-mes-dia</i></p>
 		    </div>
 		    <div class="form-group">
 		        {!! Form::label('descricao', 'Descrição', ['class' => 'control-label']) !!}
