@@ -23,8 +23,7 @@ class AtividadesController extends Controller
 
 	public function store(AtividadeRequest $request)
 	{
-		$input = $request->all();
-		Atividade::create($input);
+		Atividade::create($request->all());
 
 		return redirect()->route('atividades');
 	}

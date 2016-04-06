@@ -12,7 +12,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-	<title>3º A - #IssoAquiÉCastelo</title>
+	<title>3º A</title>
 
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700"/>
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons"/>
@@ -32,17 +32,13 @@
 	<link rel="icon" type="image/png" href="{{ asset('favicon-96x96.png') }}" sizes="96x96">
 	<link rel="icon" type="image/png" href="{{ asset('favicon-16x16.png') }}" sizes="16x16">
 	<link rel="manifest" href="{{ asset('manifest.json') }}">
-	<link rel="mask-icon" href="{{ asset('safari-pinned-tab.svg') }}" color="#009688">
+	<link rel="mask-icon" href="{{ asset('safari-pinned-tab.svg') }}" color="#005196">
 	<meta name="apple-mobile-web-app-title" content="Terceirão">
 	<meta name="application-name" content="Terceirão">
 	<meta name="msapplication-TileColor" content="#ff0000">
-	<meta name="theme-color" content="#009688">
+	<meta name="theme-color" content="#005196">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}"/>
 
-	<style>
-	body {
-		padding-top: 70px !important;
-	}
-	</style>
 	<script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -63,7 +59,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="{{ route('atividades') }}">3º A - #IssoAquiÉCastelo</a>
+				<a class="navbar-brand" href="{{ route('atividades') }}">3º A</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
@@ -75,8 +71,16 @@
 								<li><a href="{{ route('atividades.create') }}">Adicionar</a></li>
 							</ul>
 						</li>
+						<li class="dropdown">
+							<a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Provas <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="{{ route('provas') }}">Visualizar</a></li>
+								<li><a href="{{ route('provas.create') }}">Adicionar</a></li>
+							</ul>
+						</li>
 					@else
 						<li><a href="{{ route('atividades') }}">Atividades</a></li>
+						<li><a href="{{ route('provas') }}">Provas</a></a></li>
 					@endis
 					<li><a href="https://drive.google.com/a/studionoctus.com/file/d/0B-cwefcz8AzjZjFYWW1Ndzgyb1E/view" target="_blank">Horários</a></li>
 					<li><a href="https://drive.google.com/open?id=0B-cwefcz8AzjRzE0b2diTlZvaTQ" target="_blank">Caderno Virtual</a></li>
@@ -109,7 +113,7 @@
 	<div class="container">
 		@yield('content')
 	</div>
-	@yield('ads')
+	{{-- @yield('ads') --}}
 
 	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

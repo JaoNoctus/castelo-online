@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class AtividadeRequest extends Request
+class ProvaRequest extends Request
 {
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class AtividadeRequest extends Request
 	public function rules()
 	{
 		return [
-			'disciplina' 	=> 'required',
-			'entrega'		=> 'required|date',
+			'disciplina'	=> 'required',
+			'data'			=> 'required|date',
 			'descricao'		=> 'required'
 		];
 	}
