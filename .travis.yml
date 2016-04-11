@@ -15,5 +15,5 @@ before_script:
     - travis_retry composer self-update
     - travis_retry composer install --prefer-source --no-interaction --dev
     - php artisan key:generate
-    - mysql -e 'create database castelo-online;'
+    - mysql -e 'create database castelo;'
     - php artisan migrate
