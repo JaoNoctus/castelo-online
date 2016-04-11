@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateAtividadesTable extends Migration
 {
@@ -13,10 +13,10 @@ class CreateAtividadesTable extends Migration
     public function up()
     {
         Schema::create('atividades', function (Blueprint $table) {
-			$table->increments('id');
-			$table->date('entrega');
-			$table->string('disciplina', 15);
-			$table->text('descricao');
+            $table->increments('id');
+            $table->date('entrega');
+            $table->string('disciplina', 15);
+            $table->text('descricao');
             $table->timestamps();
         });
     }
