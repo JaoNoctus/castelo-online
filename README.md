@@ -1,6 +1,11 @@
 # castelo-online
 A simple app to manage homework
 
+> Current Build Status
+
+[![Build Status](https://travis-ci.org/JaoNoctus/castelo-online.svg?branch=master)](https://travis-ci.org/JaoNoctus/castelo-online)
+[![StyleCI](https://styleci.io/repos/54727103/shield)](https://styleci.io/repos/54727103)
+
 ## Support the project
 [![Support the project](host1plus.gif)](https://affiliates.host1plus.com/ref/jaonoctus/a3ee1c84.html)
 
