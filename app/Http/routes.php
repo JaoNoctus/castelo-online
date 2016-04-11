@@ -1,7 +1,7 @@
 <?php
 
-Route::get('/', function () { header('Location: atividades'); });
-Route::get('home', function () { header('Location: atividades'); });
+Route::get('/', function () { return redirect('/atividades'); });
+Route::get('home', function () { return redirect('/atividades'); });
 
 /*
  * Auth
