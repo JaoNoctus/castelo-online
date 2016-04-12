@@ -19,7 +19,7 @@
                         <th width="15%">Disciplina</th>
                         <th class="visible-lg">Descrição</th>
                         @if (Auth::check())
-                            <th class="visible-lg"></th>
+                            <th class="visible-lg" width="18%"></th>
                         @endif
                     </tr>
                 </thead>
