@@ -1,7 +1,11 @@
 <?php
 
-Route::get('/', function () { return redirect('/atividades'); });
-Route::get('home', function () { return redirect('/atividades'); });
+Route::get('/', function () {
+    return redirect('/atividades');
+});
+Route::get('home', function () {
+    return redirect('/atividades');
+});
 
 /*
  * Auth
