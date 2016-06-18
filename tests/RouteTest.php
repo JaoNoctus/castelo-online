@@ -1,5 +1,6 @@
 <?php
 
+use Castelo\User;
 
 class RouteTest extends TestCase
 {
@@ -29,7 +30,7 @@ class RouteTest extends TestCase
     {
         $password = 'P4ssw0RD';
 
-        $user = factory(App\User::class)->create(['password' => Hash::make($password)]);
+        $user = factory(User::class)->create(['password' => Hash::make($password)]);
 
         $this->visit('/auth/login')
              ->see('Login')
