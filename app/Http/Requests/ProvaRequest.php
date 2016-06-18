@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace Castelo\Http\Requests;
 
 class ProvaRequest extends Request
 {

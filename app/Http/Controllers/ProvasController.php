@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Castelo\Http\Controllers;
 
-use App\Http\Requests\ProvaRequest;
-use App\Prova;
+use Castelo\Http\Requests\ProvaRequest;
+use Castelo\Prova;
 
 class ProvasController extends Controller
 {

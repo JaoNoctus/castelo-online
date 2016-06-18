@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Castelo\Http\Controllers;
 
-use App\Atividade;
-use App\Http\Requests\AtividadeRequest;
+use Castelo\Atividade;
+use Castelo\Http\Requests\AtividadeRequest;
 
 class AtividadesController extends Controller
 {

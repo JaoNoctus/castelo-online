@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: App
-        psr4_prefix: App
+        namespace: Castelo
+        psr4_prefix: Castelo
         src_path: app

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Castelo\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;

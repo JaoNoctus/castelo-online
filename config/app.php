@@ -140,9 +140,9 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Castelo\Providers\AppServiceProvider::class,
+        Castelo\Providers\EventServiceProvider::class,
+        Castelo\Providers\RouteServiceProvider::class,
 
         /*
          * Other Service Providers...

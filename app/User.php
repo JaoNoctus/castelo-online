@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Castelo;
 
 use Artesaos\Defender\Traits\HasDefender;
 use Illuminate\Auth\Authenticatable;

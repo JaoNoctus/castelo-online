@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Castelo;
 
 use Illuminate\Database\Eloquent\Model;
 

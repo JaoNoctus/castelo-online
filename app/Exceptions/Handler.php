@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace Castelo\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Castelo\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace Castelo\Events;
 
 abstract class Event
 {
