@@ -163,7 +163,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-		Castelo\Providers\CarbonLanguageProvider::class,
+        Castelo\Providers\CarbonLanguageProvider::class,
 
     ],
 

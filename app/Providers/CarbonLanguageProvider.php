@@ -2,8 +2,8 @@
 
 namespace Castelo\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Carbon\Carbon;
+use Illuminate\Support\ServiceProvider;
 
 class CarbonLanguageProvider extends ServiceProvider
 {
