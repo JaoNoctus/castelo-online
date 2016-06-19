@@ -7,12 +7,12 @@ use Castelo\Http\Requests\AtividadeRequest;
 
 class AtividadesController extends Controller
 {
-	public function __construct()
-	{
-		$this->middleware('needsPermission:atividades.create')->only('create');
-		$this->middleware('needsPermission:atividades.edit')->only('edit', 'update');
-		$this->middleware('needsPermission:atividades.destroy')->only('destroy');
-	}
+    public function __construct()
+    {
+        $this->middleware('needsPermission:atividades.create')->only('create');
+        $this->middleware('needsPermission:atividades.edit')->only('edit', 'update');
+        $this->middleware('needsPermission:atividades.destroy')->only('destroy');
+    }
 
     public function index()
     {
