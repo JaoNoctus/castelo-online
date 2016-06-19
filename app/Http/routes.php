@@ -59,102 +59,12 @@ Route::group(['prefix' => 'password'], function () {
 /*
  * Atividades
  */
-Route::group(['prefix' => 'atividades'], function () {
-    Route::get(null, [
-        'as'      => 'atividades',
-        'uses'    => 'AtividadesController@index',
-    ]);
-
-    Route::get('create', [
-        'middleware'    => [
-            'auth'    => 'needsPermission:atividades.create',
-        ],
-        'as'      => 'atividades.create',
-        'uses'    => 'AtividadesController@create',
-    ]);
-
-    Route::post('store', [
-        'middleware'    => [
-            'auth'    => 'needsPermission:atividades.create',
-        ],
-        'as'      => 'atividades.store',
-        'uses'    => 'AtividadesController@store',
-    ]);
-
-    Route::get('{id}/edit', [
-        'middleware'    => [
-            'auth'    => 'needsPermission:atividades.edit',
-        ],
-        'as'      => 'atividades.edit',
-        'uses'    => 'AtividadesController@edit',
-    ]);
-
-    Route::put('{id}/update', [
-        'middleware'    => [
-            'auth'    => 'needsPermission:atividades.edit',
-        ],
-        'as'      => 'atividades.update',
-        'uses'    => 'AtividadesController@update',
-    ]);
-
-    Route::get('{id}/destroy', [
-        'middleware'    => [
-            'auth'    => 'needsPermission:atividades.destroy',
-        ],
-        'as'      => 'atividades.destroy',
-        'uses'    => 'AtividadesController@destroy',
-    ]);
-});
+Route::resource('atividades', AtividadesController::class);
 
 /*
  * Provas
  */
-Route::group(['prefix' => 'provas'], function () {
-    Route::get(null, [
-        'as'      => 'provas',
-        'uses'    => 'ProvasController@index',
-    ]);
-
-    Route::get('create', [
-        'middleware'    => [
-            'auth'    => 'needsPermission:provas.create',
-        ],
-        'as'      => 'provas.create',
-        'uses'    => 'ProvasController@create',
-    ]);
-
-    Route::post('store', [
-        'middleware'    => [
-            'auth'    => 'needsPermission:provas.create',
-        ],
-        'as'      => 'provas.store',
-        'uses'    => 'ProvasController@store',
-    ]);
-
-    Route::get('{id}/edit', [
-        'middleware'    => [
-            'auth'    => 'needsPermission:provas.edit',
-        ],
-        'as'      => 'provas.edit',
-        'uses'    => 'ProvasController@edit',
-    ]);
-
-    Route::put('{id}/update', [
-        'middleware'    => [
-            'auth'    => 'needsPermission:provas.edit',
-        ],
-        'as'      => 'provas.update',
-        'uses'    => 'ProvasController@update',
-    ]);
-
-    Route::get('{id}/destroy', [
-        'middleware'    => [
-            'auth'    => 'needsPermission:provas.destroy',
-        ],
-        'as'      => 'provas.destroy',
-        'uses'    => 'ProvasController@destroy',
-    ]);
-});
+Route::resource('provas', ProvasController::class);
 
 /*
  * Users

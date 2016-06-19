@@ -38,7 +38,9 @@
                                         {!! link_to(route('atividades.edit', ['id' => $atividade->id]), 'Editar', ['class' => 'btn btn-sm btn-primary']) !!}
                                     @endshield
                                     @shield ('atividades.destroy')
-                                        {!! link_to(route('atividades.destroy', ['id' => $atividade->id]), 'Excluir', ['class' => 'btn btn-sm btn-primary']) !!}
+                                        {!! Form::open(['route' => ['atividades.destroy', $atividade], 'method' => 'delete', 'style' => 'margin:0;display:inline-block;']) !!}
+											{!! Form::submit('EXCLUIR', ['class' => 'btn btn-sm btn-primary']) !!}
+										{!! Form::close() !!}
                                     @endshield
                             </td>
                             @endif

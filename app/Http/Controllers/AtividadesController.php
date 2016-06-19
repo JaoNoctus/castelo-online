@@ -23,29 +23,25 @@ class AtividadesController extends Controller
     {
         Atividade::create($request->all());
 
-        return redirect()->route('atividades');
+        return redirect()->route('atividades.index');
     }
 
-    public function destroy($id)
+    public function edit(Atividade $atividade)
     {
-        Atividade::find($id)->delete();
-
-        return redirect()->route('atividades');
-    }
-
-    public function edit($id)
-    {
-        $atividade = Atividade::find($id);
-
         return view('atividades.edit', compact('atividade'));
     }
 
-    public function update(AtividadeRequest $request, $id)
+    public function update(AtividadeRequest $request, Atividade $atividade)
     {
-        $input = $request->all();
+        $atividade->update($request->all());
 
-        Atividade::find($id)->update($input);
+        return redirect()->route('atividades.index');
+    }
 
-        return redirect()->route('atividades');
+	public function destroy(Atividade $atividade)
+    {
+        $atividade->delete();
+
+        return redirect()->route('atividades.index');
     }
 }

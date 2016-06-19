@@ -1,0 +1,39 @@
+<?php
+$disciplinas = array(
+    'Português'     => 'Português',
+    'Matemática'    => 'Matemática',
+    'Física'        => 'Física',
+    'Química'       => 'Química',
+    'Biologia'      => 'Biologia',
+    'História'      => 'História',
+    'Geografia'     => 'Geografia',
+    'Religião'      => 'Religião',
+    'Filosofia'     => 'Filosofia'
+);
+?>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1 class="panel-title">{{ $title }}</h1>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            {!! Form::label('disciplina', 'Disciplina', ['class' => 'control-label']) !!}
+            {!! Form::select('disciplina', $disciplinas, old('disciplina'), ['class' => 'form-control']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('entrega', 'Data de entrega', ['class' => 'control-label']) !!}
+            {!! Form::date('entrega', $date, ['class' => 'form-control']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('descricao', 'Descrição', ['class' => 'control-label']) !!}
+            {!! Form::textarea('descricao', old('descricao'), ['class' => 'form-control']) !!}
+        </div>
+        <div class="checkbox">
+            {!! Form::submit($submit_text, ['class' => 'btn btn-primary'])!!}
+        </div>
+    </div>
+</div>
+
+<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+<script> CKEDITOR.replace( 'descricao' ); </script>

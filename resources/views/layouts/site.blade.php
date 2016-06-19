@@ -94,7 +94,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="{{ route('atividades') }}">3º A</a>
+				<a class="navbar-brand" href="{{ route('atividades.index') }}">3º A</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
@@ -102,20 +102,20 @@
 						<li class="dropdown">
 							<a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Atividades <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="{{ route('atividades') }}">Visualizar</a></li>
+								<li><a href="{{ route('atividades.index') }}">Visualizar</a></li>
 								<li><a href="{{ route('atividades.create') }}">Adicionar</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">
 							<a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Provas <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="{{ route('provas') }}">Visualizar</a></li>
+								<li><a href="{{ route('provas.index') }}">Visualizar</a></li>
 								<li><a href="{{ route('provas.create') }}">Adicionar</a></li>
 							</ul>
 						</li>
 					@else
-						<li><a href="{{ route('atividades') }}">Atividades</a></li>
-						<li><a href="{{ route('provas') }}">Provas</a></a></li>
+						<li><a href="{{ route('atividades.index') }}">Atividades</a></li>
+						<li><a href="{{ route('provas.index') }}">Provas</a></a></li>
 					@endis
 					<li><a href="https://drive.google.com/a/studionoctus.com/file/d/0B-cwefcz8AzjZjFYWW1Ndzgyb1E/view" target="_blank">Horários</a></li>
 					<li><a href="https://drive.google.com/open?id=0B-cwefcz8AzjRzE0b2diTlZvaTQ" target="_blank">Caderno Virtual</a></li>
