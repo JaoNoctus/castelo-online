@@ -26,6 +26,7 @@ class RouteServiceProvider extends ServiceProvider
     public function boot(Router $router)
     {
         $router->model('atividades', \Castelo\Atividade::class);
+        $router->model('provas', \Castelo\Prova::class);
 
         parent::boot($router);
     }

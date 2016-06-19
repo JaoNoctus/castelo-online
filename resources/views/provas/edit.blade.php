@@ -1,13 +1,11 @@
 @extends ('layouts.site')
 
-<?php
-$layout['title']		= 'Editar prova';
-$layout['form']			= ['route' => ['provas.update', $prova->id], 'method' => 'put'];
-$layout['data']			= $prova->data;
-$layout['descricao']	= $prova->descricao;
-$layout['selected']		= $prova->disciplina;
-?>
-
 @section('content')
-    @include ('provas.layout')
+	{!! Form::model($prova, ['route' => ['provas.update', $prova], 'method' => 'put']) !!}
+    @include ('provas._form', [
+		'title' => 'Editar prova',
+		'date' => $prova->data,
+		'submit_text' => 'Salvar'
+	])
+	{!! Form::close() !!}
 @endsection

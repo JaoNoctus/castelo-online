@@ -1,13 +1,11 @@
 @extends ('layouts.site')
 
-<?php
-$layout['title']		= 'Adicionar prova';
-$layout['form']			= ['route' => 'provas.store'];
-$layout['data']			= \Carbon\Carbon::now();
-$layout['descricao']	= NULL;
-$layout['selected']		= NULL;
-?>
-
 @section('content')
-    @include ('provas.layout')
+	{!! Form::open(['route' => 'provas.store']) !!}
+    @include ('provas._form', [
+		'title' => 'Adicionar prova',
+		'date' => \Carbon\Carbon::now(),
+		'submit_text' => 'Adicionar'
+	])
+	{!! Form::close() !!}
 @endsection

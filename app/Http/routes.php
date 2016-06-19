@@ -64,7 +64,7 @@ Route::resource('atividades', AtividadesController::class, ['parameters' => 'sin
 /*
  * Provas
  */
-Route::resource('provas', ProvasController::class);
+Route::resource('provas', ProvasController::class, ['parameters' => 'singular', 'except' => ['show']]);
 
 /*
  * Users

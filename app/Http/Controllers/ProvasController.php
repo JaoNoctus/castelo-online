@@ -7,11 +7,13 @@ use Castelo\Prova;
 
 class ProvasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+	protected $home = 'provas.index';
+
+	public function __construct()
+	{
+		$this->middleware('needsPermission:provas.create')->only('create');
+	}
+
     public function index()
     {
         $data['provas'] = Prova::orderBy('data')->get();
@@ -19,82 +21,34 @@ class ProvasController extends Controller
         return view('provas.index', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('provas.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function store(ProvaRequest $request)
     {
         Prova::create($request->all());
 
-        return redirect()->route('provas');
+        return redirect()->route($this->home);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function edit(Prova $prova)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $prova = Prova::find($id);
-
         return view('provas.edit', compact('prova'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function update(ProvaRequest $request, $id)
+    public function update(ProvaRequest $request, Prova $prova)
     {
-        Prova::find($id)->update($request->all());
+        $prova->update($request->all());
 
-        return redirect()->route('provas');
+        return redirect()->route($this->home);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(Prova $prova)
     {
-        Prova::find($id)->delete();
+        $prova->delete();
 
-        return redirect()->route('provas');
+        return redirect()->route($this->home);
     }
 }

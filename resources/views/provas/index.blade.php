@@ -35,10 +35,12 @@
 							@if (Auth::check())
 								<td class="visible-lg text-right">
 									@shield ('provas.edit')
-										{!! link_to(route('provas.edit', ['id' => $prova->id]), 'Editar', ['class' => 'btn btn-sm btn-primary']) !!}
+										{!! link_to(route('provas.edit', $prova), 'Editar', ['class' => 'btn btn-sm btn-primary']) !!}
 									@endshield
 									@shield ('provas.destroy')
-										{!! link_to(route('provas.destroy', ['id' => $prova->id]), 'Excluir', ['class' => 'btn btn-sm btn-primary']) !!}
+										{!! Form::open(['route' => ['provas.destroy', $prova], 'method' => 'delete', 'style' => 'margin:0;display:inline-block;']) !!}
+											{!! Form::submit('EXCLUIR', ['class' => 'btn btn-sm btn-primary']) !!}
+										{!! Form::close() !!}
 									@endshield
 							</td>
 							@endif
@@ -62,10 +64,12 @@
 								@if (Auth::check())
 									<div class="modal-footer">
 										@shield ('provas.edit')
-											{!! link_to(route('provas.edit', ['id' => $prova->id]), 'Editar', ['class' => 'btn btn-sm btn-primary']) !!}
+											{!! link_to(route('provas.edit', $prova), 'Editar', ['class' => 'btn btn-sm btn-primary']) !!}
 										@endshield
 										@shield ('provas.destroy')
-											{!! link_to(route('provas.destroy', ['id' => $prova->id]), 'Excluir', ['class' => 'btn btn-sm btn-primary']) !!}
+											{!! Form::open(['route' => ['provas.destroy', $prova], 'method' => 'delete', 'style' => 'margin:0;display:inline-block;']) !!}
+												{!! Form::submit('EXCLUIR', ['class' => 'btn btn-sm btn-primary']) !!}
+											{!! Form::close() !!}
 										@endshield
 									</div>
 								@endif

@@ -35,7 +35,7 @@
                             @if (Auth::check())
                                 <td class="visible-lg text-right">
                                     @shield ('atividades.edit')
-                                        {!! link_to(route('atividades.edit', ['id' => $atividade->id]), 'Editar', ['class' => 'btn btn-sm btn-primary']) !!}
+                                        {!! link_to(route('atividades.edit', $atividade), 'Editar', ['class' => 'btn btn-sm btn-primary']) !!}
                                     @endshield
                                     @shield ('atividades.destroy')
                                         {!! Form::open(['route' => ['atividades.destroy', $atividade], 'method' => 'delete', 'style' => 'margin:0;display:inline-block;']) !!}
@@ -64,7 +64,7 @@
                                 @if (Auth::check())
                                     <div class="modal-footer">
                                         @shield ('atividades.edit')
-                                            {!! link_to(route('atividades.edit', ['id' => $atividade->id]), 'Editar', ['class' => 'btn btn-sm btn-primary']) !!}
+                                            {!! link_to(route('atividades.edit', $atividade), 'Editar', ['class' => 'btn btn-sm btn-primary']) !!}
                                         @endshield
                                         @shield ('atividades.destroy')
 										{!! Form::open(['route' => ['atividades.destroy', $atividade], 'method' => 'delete', 'style' => 'margin:0;display:inline-block;']) !!}

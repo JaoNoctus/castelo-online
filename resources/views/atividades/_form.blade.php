@@ -1,17 +1,3 @@
-<?php
-$disciplinas = array(
-    'Português'     => 'Português',
-    'Matemática'    => 'Matemática',
-    'Física'        => 'Física',
-    'Química'       => 'Química',
-    'Biologia'      => 'Biologia',
-    'História'      => 'História',
-    'Geografia'     => 'Geografia',
-    'Religião'      => 'Religião',
-    'Filosofia'     => 'Filosofia'
-);
-?>
-
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h1 class="panel-title">{{ $title }}</h1>
