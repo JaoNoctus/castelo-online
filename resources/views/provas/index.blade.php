@@ -25,9 +25,8 @@
 				</thead>
 				<tbody>
 					@foreach ($provas as $prova)
-						<?php $data 	= new DateTime($prova->data); ?>
 						<tr>
-							<td>{{ $data->format('d/m/Y') }}</td>
+							<td>{{ $prova->data->format('d/m/Y') }}</td>
 							<td>
 								<a href="#" data-toggle="modal" data-target="#modal{{ $prova->id }}" class="hidden-lg">{{ $prova->disciplina }}</a>
 								<span class="visible-lg">{{ $prova->disciplina }}</span>
@@ -53,7 +52,7 @@
 										<h4 class="modal-title" id="myModalLabel">Prova de {{ $prova->disciplina }}</h4>
 									</div>
 									<div class="modal-body">
-										<b>Data:</b> {{ $data->format('d/m/Y') }}
+										<b>Data:</b> {{ $prova->data->format('d/m/Y') }}
 										<p>
 											<hr />
 											{!! $prova->descricao !!}

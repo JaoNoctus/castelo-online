@@ -25,9 +25,8 @@
                 </thead>
                 <tbody>
                     @foreach ($atividades as $atividade)
-                        <?php $entrega 	= new DateTime($atividade->entrega); ?>
                         <tr>
-                            <td>{{ $entrega->format('d/m/Y') }}</td>
+                            <td>{{ $atividade->entrega->format('d/m/Y') }}</td>
                             <td>
                                 <a href="#" data-toggle="modal" data-target="#modal{{ $atividade->id }}" class="hidden-lg">{{ $atividade->disciplina }}</a>
                                 <span class="visible-lg">{{ $atividade->disciplina }}</span>
@@ -53,7 +52,7 @@
                                         <h4 class="modal-title" id="myModalLabel">Atividade de {{ $atividade->disciplina }}</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <b>Entrega:</b> {{ $entrega->format('d/m/Y') }}
+                                        <b>Entrega:</b> {{ $atividade->entrega->format('d/m/Y') }}
                                         <p>
                                             <hr />
                                             {!! $atividade->descricao !!}
