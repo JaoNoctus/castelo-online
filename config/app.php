@@ -164,7 +164,7 @@ return [
         Unisharp\Ckeditor\ServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Castelo\Providers\CarbonLanguageProvider::class,
-		Castelo\Providers\ComposerServiceProvider::class,
+        Castelo\Providers\ComposerServiceProvider::class,
 
     ],
 

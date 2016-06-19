@@ -7,12 +7,12 @@ use Castelo\Prova;
 
 class ProvasController extends Controller
 {
-	protected $home = 'provas.index';
+    protected $home = 'provas.index';
 
-	public function __construct()
-	{
-		$this->middleware('needsPermission:provas.create')->only('create');
-	}
+    public function __construct()
+    {
+        $this->middleware('needsPermission:provas.create')->only('create');
+    }
 
     public function index()
     {
