@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Prova extends Model
 {
     protected $fillable = ['disciplina', 'descricao', 'data'];
-	protected $dates = ['data'];
+    protected $dates = ['data'];
 
-	public function setDataAttribute($date)
-	{
-		$this->attributes['data'] = Carbon::createFromFormat('Y-m-d', $date);
-	}
+    public function setDataAttribute($date)
+    {
+        $this->attributes['data'] = Carbon::createFromFormat('Y-m-d', $date);
+    }
 }

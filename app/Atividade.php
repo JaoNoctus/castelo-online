@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Atividade extends Model
 {
     protected $fillable = ['disciplina', 'descricao', 'entrega'];
-	protected $dates = ['entrega'];
+    protected $dates = ['entrega'];
 
-	/**
-	 * @param $date
+    /**
+     * @param $date
      */
-	public function setEntregaAttribute($date)
-	{
-		$this->attributes['entrega'] = Carbon::createFromFormat('Y-m-d', $date);
-	}
+    public function setEntregaAttribute($date)
+    {
+        $this->attributes['entrega'] = Carbon::createFromFormat('Y-m-d', $date);
+    }
 }
