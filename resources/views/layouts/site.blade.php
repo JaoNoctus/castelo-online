@@ -1,15 +1,7 @@
 @section ('ads')
 	<center>
-		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Castelo Online -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-6934296242213124"
-     data-ad-slot="6255245692"
-     data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+		<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6934296242213124" data-ad-slot="6255245692" data-ad-format="auto"></ins>
+		<script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
 	</center>
 @endsection
 
@@ -64,25 +56,7 @@
         a, a:hover {
             color: #005196;
         }
-
     </style>
-
-	<script>
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-	ga('create', 'UA-75594098-1', 'auto');
-	ga('send', 'pageview');
-	</script>
-	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-	<script>
-	(adsbygoogle = window.adsbygoogle || []).push({
-		google_ad_client: "ca-pub-6934296242213124",
-		enable_page_level_ads: true
-	});
-	</script>
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -145,6 +119,7 @@
 		</div>
 	</nav>
 
+	@yield('ads')
 	<div class="container">
 		@yield('content')
 	</div>
@@ -156,7 +131,19 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.8/js/material.min.js"></script>
 	<script src="//fezvrasta.github.io/snackbarjs/dist/snackbar.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
 	<script> $(function () { $.material.init(); }); </script>
+	<script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-6934296242213124", enable_page_level_ads: true }); </script>
+	<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-75594098-1', 'auto');
+	ga('send', 'pageview');
+	</script>
+
 </body>
 </html>
