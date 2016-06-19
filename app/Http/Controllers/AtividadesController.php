@@ -38,7 +38,7 @@ class AtividadesController extends Controller
         return redirect()->route('atividades.index');
     }
 
-	public function destroy(Atividade $atividade)
+    public function destroy(Atividade $atividade)
     {
         $atividade->delete();
 
