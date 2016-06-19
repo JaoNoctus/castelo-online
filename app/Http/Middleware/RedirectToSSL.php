@@ -16,8 +16,8 @@ class RedirectToSSL
      */
     public function handle($request, Closure $next)
     {
-		$request->setTrustedProxies([$request->getClientIp()]);
-		
+        $request->setTrustedProxies([$request->getClientIp()]);
+
         if (!$request->isSecure() && app()->env == 'production') {
             return redirect()->secure($request->path());
         }
