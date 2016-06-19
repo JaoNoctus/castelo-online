@@ -15,7 +15,7 @@ class RedirectToSSL
      */
     public function handle($request, Closure $next)
     {
-		if (!$request->isSecure() && app()->env != 'local') {
+		if (!$request->isSecure() && app()->env == 'production') {
 			return redirect()->secure($request->path());
 		}
 
