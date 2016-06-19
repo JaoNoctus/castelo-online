@@ -59,7 +59,7 @@ Route::group(['prefix' => 'password'], function () {
 /*
  * Atividades
  */
-Route::resource('atividades', AtividadesController::class);
+Route::resource('atividades', AtividadesController::class, ['parameters' => 'singular', 'except' => ['show']]);
 
 /*
  * Provas
