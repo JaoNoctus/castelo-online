@@ -44,7 +44,28 @@
 	<meta name="application-name" content="Terceirão">
 	<meta name="msapplication-TileColor" content="#ff0000">
 	<meta name="theme-color" content="#005196">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}"/>
+
+	<style>
+        body {
+            padding-top: 70px !important;
+        }
+
+        .navbar, .navbar.navbar-default,
+        .panel.panel-primary>.panel-heading {
+            background-color: #005196;
+        }
+
+        .navbar .dropdown-menu li>a:focus,
+        .navbar .dropdown-menu li>a:hover,
+        .navbar.navbar-default .dropdown-menu li>a:focus,
+        .navbar.navbar-default .dropdown-menu li>a:hover,
+        .btn:not(.btn-raised).btn-primary,
+        .input-group-btn .btn:not(.btn-raised).btn-primary,
+        a, a:hover {
+            color: #005196;
+        }
+
+    </style>
 
 	<script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
