@@ -18,7 +18,7 @@ class Kernel extends HttpKernel
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
         \Castelo\Http\Middleware\VerifyCsrfToken::class,
-        // \Castelo\Http\Middleware\RedirectToSSL::class,
+        \Castelo\Http\Middleware\RedirectToSSL::class,
     ];
 
     /**
