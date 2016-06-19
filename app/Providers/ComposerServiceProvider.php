@@ -14,13 +14,7 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer(['route' => 'atividades.create',
-                'atividades.edit',
-                'provas.create',
-                'provas.edit',
-            ],
-            DisciplinasComposer::class
-        );
+        view()->composer(['route' => 'atividades.create', 'atividades.edit', 'provas.create', 'provas.edit'], DisciplinasComposer::class);
     }
 
     /**
