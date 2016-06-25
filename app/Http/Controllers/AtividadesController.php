@@ -2,9 +2,9 @@
 
 namespace Castelo\Http\Controllers;
 
+use Cache;
 use Castelo\Atividade;
 use Castelo\Http\Requests\AtividadeRequest;
-use Cache;
 
 class AtividadesController extends Controller
 {
@@ -18,8 +18,8 @@ class AtividadesController extends Controller
     public function index()
     {
         $data['atividades'] = Cache::remember('atividades', config('castelo.cache_time'), function () {
-			return Atividade::orderBy('entrega')->get();
-		});
+            return Atividade::orderBy('entrega')->get();
+        });
 
         return view('atividades.index', $data);
     }
@@ -33,7 +33,7 @@ class AtividadesController extends Controller
     {
         Atividade::create($request->all());
 
-		Cache::forget('atividades');
+        Cache::forget('atividades');
 
         return redirect()->route('atividades.index');
     }
@@ -47,7 +47,7 @@ class AtividadesController extends Controller
     {
         $atividade->update($request->all());
 
-		Cache::forget('atividades');
+        Cache::forget('atividades');
 
         return redirect()->route('atividades.index');
     }
@@ -56,7 +56,7 @@ class AtividadesController extends Controller
     {
         $atividade->delete();
 
-		Cache::forget('atividades');
+        Cache::forget('atividades');
 
         return redirect()->route('atividades.index');
     }
