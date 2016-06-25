@@ -10,7 +10,7 @@ class DisciplinasComposer
 
     public function __construct()
     {
-        $disciplinas = config('disciplinas.disciplinas');
+        $disciplinas = config('castelo.disciplinas');
         $this->disciplinas = array_combine($disciplinas, $disciplinas);
     }
 

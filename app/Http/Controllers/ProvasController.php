@@ -4,6 +4,7 @@ namespace Castelo\Http\Controllers;
 
 use Castelo\Http\Requests\ProvaRequest;
 use Castelo\Prova;
+use Cache;
 
 class ProvasController extends Controller
 {
@@ -16,7 +17,9 @@ class ProvasController extends Controller
 
     public function index()
     {
-        $data['provas'] = Prova::orderBy('data')->get();
+        $data['provas'] = Cache::remember('provas', config('castelo.cache_time'), function () {
+			return Prova::orderBy('data')->get();
+		});
 
         return view('provas.index', $data);
     }
@@ -30,6 +33,8 @@ class ProvasController extends Controller
     {
         Prova::create($request->all());
 
+		Cache::forget('provas');
+
         return redirect()->route($this->home);
     }
 
@@ -42,12 +47,16 @@ class ProvasController extends Controller
     {
         $prova->update($request->all());
 
+		Cache::forget('provas');
+
         return redirect()->route($this->home);
     }
 
     public function destroy(Prova $prova)
     {
         $prova->delete();
+
+		Cache::forget('provas');
 
         return redirect()->route($this->home);
     }

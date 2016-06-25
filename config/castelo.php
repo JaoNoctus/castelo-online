@@ -14,4 +14,6 @@ return [
         'Filosofia',
     ],
 
+	'cache_time' => 30,
+
 ];
