@@ -104,6 +104,7 @@
 					@endis
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
+					<li><a title="HOJE">{{ \Carbon\Carbon::now()->format('d/m/Y') }}</a></li>
 					@if (Auth::check())
 						<li class="dropdown">
 							<a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }} <b class="caret"></b></a>
