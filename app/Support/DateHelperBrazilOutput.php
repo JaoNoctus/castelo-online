@@ -8,9 +8,20 @@ class DateHelperBrazilOutput implements DateHelperOutputInterface
     protected $textTomorrow = 'Amanhã';
     protected $textPast = 'Expirado';
     protected $textFormat = 'd/m/Y';
+	protected $days = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
 
     public function output($date)
     {
-        return ($date->isToday()) ? $this->textToday : (($date->isTomorrow()) ? $this->textTomorrow : (($date->isPast()) ? $this->textPast : $date->format($this->textFormat)));
+		if ($date->isToday()) {
+			return $this->textToday;
+		} elseif ($date->isTomorrow()) {
+			return $this->textTomorrow;
+		} elseif ($date->isPast()) {
+			return $this->textPast;
+		} elseif ($date->diffInDays() < 5) {
+			return $this->days[$date->dayOfWeek];
+		} else {
+			return $date->format($this->textFormat);
+		}
     }
 }
