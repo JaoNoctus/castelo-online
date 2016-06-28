@@ -4,6 +4,8 @@ namespace Castelo;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Castelo\Support\DateHelper;
+use Castelo\Support\DateHelperBrazilOutput;
 
 class Prova extends Model
 {
@@ -14,4 +16,9 @@ class Prova extends Model
     {
         $this->attributes['data'] = Carbon::createFromFormat('Y-m-d', $date);
     }
+
+	public function getDateInSmartOutputAttribute()
+	{
+		return (new DateHelper($this->data))->output(new DateHelperBrazilOutput);
+	}
 }

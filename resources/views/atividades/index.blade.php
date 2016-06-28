@@ -26,7 +26,7 @@
                 <tbody>
                     @foreach ($atividades as $atividade)
                         <tr>
-                            <td>{{ $atividade->entrega->format('d/m/Y') }}</td>
+                            <td>{{ $atividade->dateInSmartOutput }}</td>
                             <td>
                                 <a href="#" data-toggle="modal" data-target="#modal{{ $atividade->id }}" class="hidden-lg">{{ $atividade->disciplina }}</a>
                                 <span class="visible-lg">{{ $atividade->disciplina }}</span>

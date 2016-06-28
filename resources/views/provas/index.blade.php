@@ -26,7 +26,7 @@
 				<tbody>
 					@foreach ($provas as $prova)
 						<tr>
-							<td>{{ $prova->data->format('d/m/Y') }}</td>
+							<td>{{ $prova->dateInSmartOutput }}</td>
 							<td>
 								<a href="#" data-toggle="modal" data-target="#modal{{ $prova->id }}" class="hidden-lg">{{ $prova->disciplina }}</a>
 								<span class="visible-lg">{{ $prova->disciplina }}</span>
