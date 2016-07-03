@@ -15,7 +15,7 @@ return [
         'Filosofia',
     ],
 
-	// 4 hours
+    // 4 hours
     'cache_time' => 4 * 60,
 
 ];
