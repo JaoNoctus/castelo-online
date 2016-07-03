@@ -18,7 +18,7 @@ class ProvasController extends Controller
     public function index()
     {
         $data['provas'] = Cache::remember('provas', config('castelo.cache_time'), function () {
-            return Prova::orderBy('data')->get();
+            return Prova::isActual()->orderBy('data')->get();
         });
 
         return view('provas.index', $data);
