@@ -10,10 +10,12 @@ return [
         'Biologia',
         'História',
         'Geografia',
+        'Redação',
         'Religião',
         'Filosofia',
     ],
 
-    'cache_time' => 30,
+	// 4 hours
+    'cache_time' => 4 * 60,
 
 ];
