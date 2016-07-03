@@ -22,8 +22,8 @@ class Prova extends Model
         return (new DateHelper($this->data))->output(new DateHelperBrazilOutput());
     }
 
-	public function scopeIsActual($query)
-	{
-		return $query->where('data', '>=', Carbon::now()->subDay());
-	}
+    public function scopeIsActual($query)
+    {
+        return $query->where('data', '>=', Carbon::now()->subDay());
+    }
 }
