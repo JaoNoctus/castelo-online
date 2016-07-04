@@ -30,65 +30,64 @@ class Notify extends Command
      */
     public function handle()
     {
-		$translate = [
-			'ê' => 'e',
-			'á' => 'a',
-			'í' => 'i',
-			'ó' => 'o',
-			'ç' => 'c',
-			'ã' => 'a',
-		];
+        $translate = [
+            'ê' => 'e',
+            'á' => 'a',
+            'í' => 'i',
+            'ó' => 'o',
+            'ç' => 'c',
+            'ã' => 'a',
+        ];
 
         $contents = [
-			'en' => strtr($this->argument('content'), $translate),
-			'pt' => $this->argument('content')
-		];
+            'en' => strtr($this->argument('content'), $translate),
+            'pt' => $this->argument('content'),
+        ];
 
-		$data = [
-			'headings' => ['en' => $this->argument('title')],
-			'contents' => $contents,
-			'url' => $this->argument('url'),
-		];
+        $data = [
+            'headings' => ['en' => $this->argument('title')],
+            'contents' => $contents,
+            'url'      => $this->argument('url'),
+        ];
 
-		$response = $this->sendMessage($data);
-		$return["allresponses"] = $response;
-		$return = json_encode($return);
-		// print("\n\nJSON received:\n");
-		// print($return);
-		// print("\n");
+        $response = $this->sendMessage($data);
+        $return['allresponses'] = $response;
+        $return = json_encode($return);
+        // print("\n\nJSON received:\n");
+        // print($return);
+        // print("\n");
     }
 
-	protected function sendMessage(array $data)
-	{
-		$fields = [
-			'app_id' => "cac79e6d-7c26-41ae-aca0-79fcbc0f8c83",
-			'included_segments' => ['All'],
-			// 'include_player_ids' => ['2a5c7f29-aecf-424a-be0f-060b6136d413'],
-			'headings' => $data['headings'],
-			'contents' => $data['contents'],
-			'url' => $data['url'],
-		];
+    protected function sendMessage(array $data)
+    {
+        $fields = [
+            'app_id'            => 'cac79e6d-7c26-41ae-aca0-79fcbc0f8c83',
+            'included_segments' => ['All'],
+            // 'include_player_ids' => ['2a5c7f29-aecf-424a-be0f-060b6136d413'],
+            'headings' => $data['headings'],
+            'contents' => $data['contents'],
+            'url'      => $data['url'],
+        ];
 
-		$fields = json_encode($fields);
-		// print("\nJSON sent:\n");
-		// print($fields);
+        $fields = json_encode($fields);
+        // print("\nJSON sent:\n");
+        // print($fields);
 
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
-		curl_setopt($ch, CURLOPT_HTTPHEADER, [
-			'Content-Type: application/json',
-            'Authorization: Basic NmUyZjYyMjQtODkxOS00MjJmLWFjYmEtNmUzOTZkZDliNzhi'
-		]);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-		curl_setopt($ch, CURLOPT_HEADER, FALSE);
-		curl_setopt($ch, CURLOPT_POST, TRUE);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://onesignal.com/api/v1/notifications');
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json',
+            'Authorization: Basic NmUyZjYyMjQtODkxOS00MjJmLWFjYmEtNmUzOTZkZDliNzhi',
+        ]);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
-		$response = curl_exec($ch);
-		curl_close($ch);
+        $response = curl_exec($ch);
+        curl_close($ch);
 
-		return $response;
-	}
-
+        return $response;
+    }
 }
