@@ -24,4 +24,20 @@ class Atividade extends Model
     {
         return (new DateHelper($this->entrega))->output(new DateHelperBrazilOutput());
     }
+
+	public function scopeIsActual($query)
+	{
+		return $query->where('entrega', '>=', Carbon::now()->subDay());
+	}
+
+	public function scopeIsOld($query)
+	{
+		return $query->where('entrega', '<=', Carbon::now()->subDay());
+	}
+
+	public function scopeForTomorrow($query)
+	{
+		return $query->where('entrega', '>=', Carbon::parse('tomorrow')->startOfDay())
+					 ->where('entrega', '<=', Carbon::parse('tomorrow')->endOfDay());
+	}
 }

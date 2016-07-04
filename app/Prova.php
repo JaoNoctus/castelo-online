@@ -26,4 +26,10 @@ class Prova extends Model
     {
         return $query->where('data', '>=', Carbon::now()->subDay());
     }
+
+	public function scopeForTomorrow($query)
+	{
+		return $query->where('data', '>=', Carbon::parse('tomorrow')->startOfDay())
+					 ->where('data', '<=', Carbon::parse('tomorrow')->endOfDay());
+	}
 }
