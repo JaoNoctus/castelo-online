@@ -38,7 +38,7 @@ class Notify extends Command
 			'ç' => 'c',
 			'ã' => 'a',
 		];
-		
+
         $contents = [
 			'en' => strtr($this->argument('content'), $translate),
 			'pt' => $this->argument('content')
@@ -47,7 +47,7 @@ class Notify extends Command
 		$data = [
 			'headings' => ['en' => $this->argument('title')],
 			'contents' => $contents,
-			'url' => ['en' => $this->argument('url')],
+			'url' => $this->argument('url'),
 		];
 
 		$response = $this->sendMessage($data);
@@ -62,8 +62,8 @@ class Notify extends Command
 	{
 		$fields = [
 			'app_id' => "cac79e6d-7c26-41ae-aca0-79fcbc0f8c83",
-			// 'included_segments' => ['All'],
-			'include_player_ids' => ['2a5c7f29-aecf-424a-be0f-060b6136d413'],
+			'included_segments' => ['All'],
+			// 'include_player_ids' => ['2a5c7f29-aecf-424a-be0f-060b6136d413'],
 			'headings' => $data['headings'],
 			'contents' => $data['contents'],
 			'url' => $data['url'],
