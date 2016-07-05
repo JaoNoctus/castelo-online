@@ -7,6 +7,18 @@
 
 <html lang="pt-br">
 <head>
+	<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+	<script>
+		var OneSignal = OneSignal || [];
+		OneSignal.push(["init", {
+			appId: "cac79e6d-7c26-41ae-aca0-79fcbc0f8c83",
+			safari_web_id: "web.onesignal.auto.3cbb98e8-d926-4cfe-89ae-1bc86ff7cf70",
+			autoRegister: true,
+			notifyButton: {
+				enable: true /* Set to false to hide */
+			}
+		}]);
+	</script>
 	<meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -134,6 +146,13 @@
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
 	<script> $(function () { $.material.init(); }); </script>
+	@if (session('status'))
+	<script>
+	$(function() {
+            $.snackbar({content: "{{ session('status') }}", timeout: 10000});
+        });
+	</script>
+	@endif
 	<script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-6934296242213124", enable_page_level_ads: true }); </script>
 	<script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
