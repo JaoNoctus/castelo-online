@@ -8,7 +8,7 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
-	protected $test;
+    protected $test;
 
     /**
      * The Artisan commands provided by your application.
@@ -32,30 +32,28 @@ class Kernel extends ConsoleKernel
         $schedule->command('inspire')
                  ->hourly();
 
-		$schedule->call(function () {
+        $schedule->call(function () {
+            $atividades = \Castelo\Atividade::forTomorrow()->get()->implode('disciplina', ', ');
 
-			$atividades = \Castelo\Atividade::forTomorrow()->get()->implode('disciplina', ', ');
+            Artisan::call('notify', [
+                'title'   => 'ATIVIDADE PARA AMANHÃ',
+                'content' => $atividades,
+                'url'     => 'https://castelo.noctus.org/atividades',
+            ]);
+        })->twiceDaily(7, 14)->when(function () {
+            return \Castelo\Atividade::forTomorrow()->count() > 0;
+        });
 
-			Artisan::call('notify', [
-				'title' => 'ATIVIDADE PARA AMANHÃ',
-				'content' => $atividades,
-				'url' => 'https://castelo.noctus.org/atividades'
-			]);
-		})->twiceDaily(7, 14)->when(function () {
-			return (\Castelo\Atividade::forTomorrow()->count() > 0);
-		});
+        $schedule->call(function () {
+            $provas = \Castelo\Prova::forTomorrow()->get()->implode('disciplina', ', ');
 
-		$schedule->call(function () {
-
-			$provas = \Castelo\Prova::forTomorrow()->get()->implode('disciplina', ', ');
-
-			Artisan::call('notify', [
-				'title' => 'PROVA AMANHÃ',
-				'content' => $provas,
-				'url' => 'https://castelo.noctus.org/provas'
-			]);
-		})->twiceDaily(8, 15)->when(function () {
-			return (\Castelo\Atividade::forTomorrow()->count() > 0);
-		});
+            Artisan::call('notify', [
+                'title'   => 'PROVA AMANHÃ',
+                'content' => $provas,
+                'url'     => 'https://castelo.noctus.org/provas',
+            ]);
+        })->twiceDaily(8, 15)->when(function () {
+            return \Castelo\Atividade::forTomorrow()->count() > 0;
+        });
     }
 }
