@@ -2,6 +2,7 @@
 
 namespace Castelo\Http\Controllers;
 
+use Artisan;
 use Cache;
 use Castelo\Atividade;
 use Castelo\Http\Requests\AtividadeRequest;
@@ -18,7 +19,7 @@ class AtividadesController extends Controller
     public function index()
     {
         $data['atividades'] = Cache::remember('atividades', config('castelo.cache_time'), function () {
-            return Atividade::orderBy('entrega')->get();
+            return Atividade::/*IsActual()->*/orderBy('entrega')->get();
         });
 
         return view('atividades.index', $data);
@@ -35,7 +36,13 @@ class AtividadesController extends Controller
 
         Cache::forget('atividades');
 
-        return redirect()->route('atividades.index');
+		Artisan::call('notify', [
+			'title' => 'ATIVIDADE CADASTRADA',
+			'content' => 'Clique para ver',
+			'url' => 'https://castelo.noctus.org/atividades'
+		]);
+
+        return redirect()->route('atividades.index')->with('status', 'Atividade adicionada com sucesso!');
     }
 
     public function edit(Atividade $atividade)

@@ -2,6 +2,7 @@
 
 namespace Castelo\Http\Controllers;
 
+use Artisan;
 use Cache;
 use Castelo\Http\Requests\ProvaRequest;
 use Castelo\Prova;
@@ -34,6 +35,12 @@ class ProvasController extends Controller
         Prova::create($request->all());
 
         Cache::forget('provas');
+
+		Artisan::call('notify', [
+			'title' => 'PROVA CADASTRADA',
+			'content' => 'Clique para ver',
+			'url' => 'https://castelo.noctus.org/provas'
+		]);
 
         return redirect()->route($this->home);
     }
