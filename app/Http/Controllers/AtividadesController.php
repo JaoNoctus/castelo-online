@@ -36,11 +36,11 @@ class AtividadesController extends Controller
 
         Cache::forget('atividades');
 
-		Artisan::call('notify', [
-			'title' => 'ATIVIDADE CADASTRADA',
-			'content' => 'Clique para ver',
-			'url' => 'https://castelo.noctus.org/atividades'
-		]);
+        Artisan::call('notify', [
+            'title'   => 'ATIVIDADE CADASTRADA',
+            'content' => 'Clique para ver',
+            'url'     => 'https://castelo.noctus.org/atividades',
+        ]);
 
         return redirect()->route('atividades.index')->with('status', 'Atividade adicionada com sucesso!');
     }

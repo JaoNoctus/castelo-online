@@ -36,11 +36,11 @@ class ProvasController extends Controller
 
         Cache::forget('provas');
 
-		Artisan::call('notify', [
-			'title' => 'PROVA CADASTRADA',
-			'content' => 'Clique para ver',
-			'url' => 'https://castelo.noctus.org/provas'
-		]);
+        Artisan::call('notify', [
+            'title'   => 'PROVA CADASTRADA',
+            'content' => 'Clique para ver',
+            'url'     => 'https://castelo.noctus.org/provas',
+        ]);
 
         return redirect()->route($this->home);
     }
