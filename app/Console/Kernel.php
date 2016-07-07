@@ -29,6 +29,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+		$schedule_crons = config('castelo.schedule');
+
         $schedule->command('inspire')
                  ->hourly();
 
@@ -40,7 +42,7 @@ class Kernel extends ConsoleKernel
                 'content' => $atividades,
                 'url'     => 'https://castelo.noctus.org/atividades',
             ]);
-        })->twiceDaily(7, 14)->when(function () {
+        })->cron($schedule_crons['notify']['atividade'])->when(function () {
             return \Castelo\Atividade::forTomorrow()->count() > 0;
         });
 
@@ -52,8 +54,8 @@ class Kernel extends ConsoleKernel
                 'content' => $provas,
                 'url'     => 'https://castelo.noctus.org/provas',
             ]);
-        })->twiceDaily(8, 15)->when(function () {
-            return \Castelo\Atividade::forTomorrow()->count() > 0;
+        })->cron($schedule_crons['notify']['prova'])->when(function () {
+            return \Castelo\Prova::forTomorrow()->count() > 0;
         });
     }
 }
