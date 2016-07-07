@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-		$schedule_crons = config('castelo.schedule');
+        $schedule_crons = config('castelo.schedule');
 
         $schedule->command('inspire')
                  ->hourly();

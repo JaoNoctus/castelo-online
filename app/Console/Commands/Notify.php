@@ -60,24 +60,24 @@ class Notify extends Command
 
     protected function sendMessage(array $data)
     {
-		$onesignal = config('castelo.onesignal');
+        $onesignal = config('castelo.onesignal');
 
         $fields = [
-            'app_id' => $onesignal['app_key'],
+            'app_id'   => $onesignal['app_key'],
             'headings' => $data['headings'],
             'contents' => $data['contents'],
-            'url' => $data['url'],
+            'url'      => $data['url'],
         ];
 
-		switch ($onesignal['send_for']) {
-			case 'player_ids':
-				$fields['include_player_ids'] = $onesignal['for']['player_ids'];
-				break;
+        switch ($onesignal['send_for']) {
+            case 'player_ids':
+                $fields['include_player_ids'] = $onesignal['for']['player_ids'];
+                break;
 
-			default:
-				$fields['included_segments'] = $onesignal['for']['included_segments'];
-				break;
-		}
+            default:
+                $fields['included_segments'] = $onesignal['for']['included_segments'];
+                break;
+        }
 
         $fields = json_encode($fields);
         // print("\nJSON sent:\n");
@@ -87,7 +87,7 @@ class Notify extends Command
         curl_setopt($ch, CURLOPT_URL, 'https://onesignal.com/api/v1/notifications');
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'Content-Type: application/json',
-            'Authorization: Basic ' . $onesignal['api_key'],
+            'Authorization: Basic '.$onesignal['api_key'],
         ]);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, false);
