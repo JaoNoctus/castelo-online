@@ -103,7 +103,7 @@
 						<li><a href="{{ route('atividades.index') }}">Atividades</a></li>
 						<li><a href="{{ route('provas.index') }}">Provas</a></a></li>
 					@endis
-					<li><a href="https://drive.google.com/a/studionoctus.com/file/d/0B-cwefcz8AzjZjFYWW1Ndzgyb1E/view" target="_blank">Horários</a></li>
+					<li><a href="{{ route('horarios.index') }}">Horários</a></li>
 					<li><a href="https://drive.google.com/open?id=0B-cwefcz8AzjRzE0b2diTlZvaTQ" target="_blank">Caderno Virtual</a></li>
 					@is ('admin')
 						<li class="dropdown">

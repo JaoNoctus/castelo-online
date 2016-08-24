@@ -8,6 +8,10 @@ Route::get('home', function () {
     return redirect('/atividades');
 });
 
+Route::get('horarios', ['as' => 'horarios.index', function () {
+    return view('horarios.index');
+}]);
+
 /*
  * Auth
  */
