@@ -30,9 +30,9 @@ return [
     'schedule' => [
         'notify' => [
             // every day, 8am and 2pm
-            'atividade' => '* 8,14 * * *',
+            'atividade' => '0 8,14 * * *',
             // every day, 8am and 6pm
-            'prova' => '* 7,18 * * *',
+            'prova' => '0 7,18 * * *',
         ],
     ],
 
