@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AtividadeRequest;
 use App\Atividade;
+use App\Http\Requests\AtividadeRequest;
 
 class AtividadesController extends Controller
 {
     public function index()
     {
         $atividades = Atividade::all();
+
         return view('atividades.index', compact('atividades'));
     }
 

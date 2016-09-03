@@ -26,7 +26,7 @@ class AtividadeRequest extends FormRequest
         return [
             'disciplina'    => 'required',
             'entrega'       => 'required|date',
-            'descricao'     => 'required'
+            'descricao'     => 'required',
         ];
     }
 }

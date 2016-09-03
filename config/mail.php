@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => 'postmaster@castelo.noctus.org',
-        'name' => 'Castelo',
+        'name'    => 'Castelo',
     ],
 
     /*
