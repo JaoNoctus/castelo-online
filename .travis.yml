@@ -7,6 +7,7 @@ php:
 branches:
   only:
     - master
+    - develop
 
 services:
   - mysql
@@ -14,7 +15,7 @@ services:
 before_script:
     - cp .env.example .env
     - travis_retry composer self-update
-    - travis_retry composer install --prefer-source --no-interaction --dev
+    - travis_retry composer install --prefer-source --no-interaction
     - php artisan key:generate
     - mysql -e 'create database castelo;'
     - php artisan migrate
