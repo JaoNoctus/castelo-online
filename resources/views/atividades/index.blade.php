@@ -1,84 +1,51 @@
-@extends('layouts.site')
+@extends('layouts.app')
 
 @section('content')
-    <div class="panel panel-default">
-        <div class="panel-body text-center hidden-lg small">
-            PARA VISUALIZAR, CLIQUE NA DISCIPLINA.
-        </div>
-    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Atividades
+                        <div class="btn-group pull-right">
+                            <a href="{{ route('atividades.create') }}" class="btn btn-xs btn-default">Adicionar</a>
+                        </div>
+                    </div>
 
-    <div class="panel panel-primary">
-		<div class="panel-heading">
-            <h1 class="panel-title">Atividades</h1>
-        </div>
-        <div class="panel-body">
-            <table class="table table-striped table-hover table-responsive">
-                <thead>
-                    <tr>
-                        <th width="15%">Entrega</th>
-                        <th width="15%">Disciplina</th>
-                        <th class="visible-lg">Descrição</th>
-                        @if (Auth::check())
-                            <th class="visible-lg" width="18%"></th>
-                        @endif
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($atividades as $atividade)
-                        <tr>
-                            <td>{{ $atividade->dateInSmartOutput }}</td>
-                            <td>
-                                <a href="#" data-toggle="modal" data-target="#modal{{ $atividade->id }}" class="hidden-lg">{{ $atividade->disciplina }}</a>
-                                <span class="visible-lg">{{ $atividade->disciplina }}</span>
-                            </td>
-                            <td class="visible-lg">{!! $atividade->descricao !!}</td>
-                            @if (Auth::check())
-                                <td class="visible-lg text-right">
-                                    @shield ('atividades.edit')
-                                        {!! link_to(route('atividades.edit', $atividade), 'Editar', ['class' => 'btn btn-sm btn-primary']) !!}
-                                    @endshield
-                                    @shield ('atividades.destroy')
-                                        {!! Form::open(['route' => ['atividades.destroy', $atividade], 'method' => 'delete', 'style' => 'margin:0;display:inline-block;']) !!}
-											{!! Form::submit('EXCLUIR', ['class' => 'btn btn-sm btn-primary']) !!}
-										{!! Form::close() !!}
-                                    @endshield
-                            </td>
-                            @endif
-                        </tr>
-
-                        <div class="modal fade" id="modal{{ $atividade->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" id="myModalLabel">Atividade de {{ $atividade->disciplina }}</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <b>Entrega:</b> {{ $atividade->entrega->format('d/m/Y') }}
-                                        <p>
-                                            <hr />
-                                            {!! $atividade->descricao !!}
-                                        </br/>
-                                    </p>
-                                </div>
-                                @if (Auth::check())
-                                    <div class="modal-footer">
-                                        @shield ('atividades.edit')
-                                            {!! link_to(route('atividades.edit', $atividade), 'Editar', ['class' => 'btn btn-sm btn-primary']) !!}
-                                        @endshield
-                                        @shield ('atividades.destroy')
-										{!! Form::open(['route' => ['atividades.destroy', $atividade], 'method' => 'delete', 'style' => 'margin:0;display:inline-block;']) !!}
-											{!! Form::submit('EXCLUIR', ['class' => 'btn btn-sm btn-primary']) !!}
-										{!! Form::close() !!}
-                                        @endshield
-                                    </div>
-                                @endif
+                    <div class="panel-body">
+                        @if ($atividades->isEmpty())
+                            <div class="text-center">
+                                <h3>Nenhuma atividade pendente.</h3>
                             </div>
-                        </div>
-                        </div>
-                    @endforeach
-                </tbody>
-            </table>
+                        @else
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th width="5%"> </th>
+                                        <th width="16%">Entrega</th>
+                                        <th width="20%">Disciplina</th>
+                                        <th>Descrição</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($atividades as $atividade)
+                                        <tr>
+                                            <td>
+                                                <a href="#" class="text-muted">
+                                                    <i class="fa fa-check-circle-o"></i>
+                                                </a>
+                                            </td>
+                                            <td>{{ $atividade->entrega->format('d/m/Y') }}</td>
+                                            <td>{{ $atividade->disciplina }}</td>
+                                            <td>{!! $atividade->descricao !!}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @endif
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

@@ -1,5 +1,0 @@
-suites:
-    main:
-        namespace: Castelo
-        psr4_prefix: Castelo
-        src_path: app
