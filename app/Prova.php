@@ -2,10 +2,10 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Support\DateHelper;
 use App\Support\DateHelperBrazilOutput;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 
 class Prova extends Model
 {

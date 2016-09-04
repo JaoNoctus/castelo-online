@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Prova;
 use App\Http\Requests\ProvaRequest;
+use App\Prova;
 use Illuminate\Support\Facades\Input;
 
 class ProvasController extends Controller
