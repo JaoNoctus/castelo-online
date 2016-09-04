@@ -3,11 +3,18 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Support\DateHelper;
+use App\Support\DateHelperBrazilOutput;
 
 class Atividade extends Model
 {
     protected $fillable = ['disciplina', 'descricao', 'entrega'];
     protected $dates = ['entrega'];
+
+    public function getDateInSmartOutputAttribute()
+    {
+        return (new DateHelper($this->entrega))->output(new DateHelperBrazilOutput());
+    }
 
     public function feitas()
     {

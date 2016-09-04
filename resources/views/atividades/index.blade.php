@@ -9,7 +9,7 @@
                         Filtros
                     </div>
                     <div class="list-group">
-                        <a class="list-group-item" href="{{ route('atividades.index') }}">Todos</a>
+                        <a class="list-group-item" href="{{ route('atividades.index') }}">Tudo</a>
                         <a class="list-group-item" href="{{ route('atividades.index', ['list' => 'pending']) }}">Pendentes</a>
                         <a class="list-group-item" href="{{ route('atividades.index', ['list' => 'done']) }}">Feitos</a>
                     </div>
@@ -47,7 +47,7 @@
                                                     <i class="fa fa-lg {{ $atividade->feitas->contains(Auth::user()) ? 'fa-check-circle' : 'fa-check-circle-o' }}"></i>
                                                 </a>
                                             </td>
-                                            <td style="vertical-align: middle;">{{ $atividade->entrega->format('d/m/Y') }}</td>
+                                            <td style="vertical-align: middle;">{{ $atividade->dateInSmartOutput }}</td>
                                             <td style="vertical-align: middle;">{{ $atividade->disciplina }}</td>
                                             <td style="vertical-align: middle;" class="text-right">
                                                 <div class="btn-group">
