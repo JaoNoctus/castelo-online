@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Support\DateHelper;
 use App\Support\DateHelperBrazilOutput;
+use Illuminate\Database\Eloquent\Model;
 
 class Atividade extends Model
 {
