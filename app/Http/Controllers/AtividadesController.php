@@ -13,15 +13,15 @@ class AtividadesController extends Controller
     {
         switch (Input::get('list')) {
             case 'done':
-                $atividades = Atividade::done(Auth::user()->id)->get();
+                $atividades = Atividade::done(Auth::user()->id)->orderBy('entrega')->get();
                 break;
 
             case 'pending':
-                $atividades = Atividade::pending(Auth::user()->id)->get();
+                $atividades = Atividade::pending(Auth::user()->id)->orderBy('entrega')->get();
                 break;
 
             default:
-                $atividades = Atividade::all();
+                $atividades = Atividade::orderBy('entrega')->get();
                 break;
         }
 
