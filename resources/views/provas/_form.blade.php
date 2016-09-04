@@ -1,25 +1,28 @@
-<div class="panel panel-primary">
-	<div class="panel-heading">
-		<h1 class="panel-title">{{ $title }}</h1>
-	</div>
-	<div class="panel-body">
-			<div class="form-group">
-				{!! Form::label('disciplina', 'Disciplina', ['class' => 'control-label']) !!}
-				{!! Form::select('disciplina', $disciplinas, old('disciplinas'), ['class' => 'form-control']) !!}
-			</div>
-			<div class="form-group">
-				{!! Form::label('data', 'Data', ['class' => 'control-label']) !!}
-				{!! Form::date('data', $date, ['class' => 'form-control']) !!}
-			</div>
-			<div class="form-group">
-				{!! Form::label('descricao', 'Descrição', ['class' => 'control-label']) !!}
-				{!! Form::textarea('descricao', old('descricao'), ['class' => 'form-control']) !!}
-			</div>
-			<div class="checkbox">
-				{!! Form::submit($submit_text, ['class' => 'btn btn-primary'])!!}
-			</div>
-	</div>
+<div class="form-group">
+    {!! Form::label('disciplina', 'Disciplina', ['class' => 'control-label col-md-2']) !!}
+    <div class="col-md-10">
+        {!! Form::select('disciplina', $disciplinas, NULL, ['class' => 'form-control']) !!}
+    </div>
 </div>
 
-<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
-<script> CKEDITOR.replace( 'descricao' ); </script>
+<div class="form-group">
+    {!! Form::label('data', 'Data', ['class' => 'control-label col-md-2']) !!}
+    <div class="col-md-10">
+        {!! Form::date('data', $date, ['class' => 'form-control']) !!}
+    </div>
+</div>
+
+<div class="form-group">
+    {!! Form::label('descricao', 'Descrição', ['class' => 'control-label col-md-2']) !!}
+    <div class="col-md-10">
+        {!! Form::textarea('descricao', NULL, ['class' => 'form-control']) !!}
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-10 col-md-offset-2">
+        <button type="submit" class="btn btn-block btn-default">
+            Salvar
+        </button>
+    </div>
+</div>

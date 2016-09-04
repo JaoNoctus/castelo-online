@@ -1,6 +1,6 @@
 <?php
 
-namespace Castelo\Support;
+namespace App\Support;
 
 use Carbon\Carbon;
 

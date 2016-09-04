@@ -1,10 +1,10 @@
 <?php
 
-namespace Castelo;
+namespace App;
 
+use App\Support\DateHelper;
+use App\Support\DateHelperBrazilOutput;
 use Carbon\Carbon;
-use Castelo\Support\DateHelper;
-use Castelo\Support\DateHelperBrazilOutput;
 use Illuminate\Database\Eloquent\Model;
 
 class Prova extends Model
@@ -12,24 +12,18 @@ class Prova extends Model
     protected $fillable = ['disciplina', 'descricao', 'data'];
     protected $dates = ['data'];
 
-    public function setDataAttribute($date)
-    {
-        $this->attributes['data'] = Carbon::createFromFormat('Y-m-d', $date);
-    }
-
     public function getDateInSmartOutputAttribute()
     {
         return (new DateHelper($this->data))->output(new DateHelperBrazilOutput());
     }
 
-    public function scopeIsActual($query)
+    public function scopeActualOnly($query)
     {
         return $query->where('data', '>=', Carbon::now()->subDay());
     }
 
-    public function scopeForTomorrow($query)
+    public function scopeOldOnly($query)
     {
-        return $query->where('data', '>=', Carbon::parse('tomorrow')->startOfDay())
-                     ->where('data', '<=', Carbon::parse('tomorrow')->endOfDay());
+        return $query->where('data', '<', Carbon::now()->subDay());
     }
 }

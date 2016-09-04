@@ -1,12 +1,12 @@
 <?php
 
-namespace Castelo\Support;
+namespace App\Support;
 
 class DateHelperBrazilOutput implements DateHelperOutputInterface
 {
     protected $textToday = 'Hoje';
     protected $textTomorrow = 'Amanhã';
-    protected $textPast = 'Expirado';
+    protected $textPast = '-';
     protected $textFormat = 'd/m/Y';
     protected $days = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
 

@@ -1,10 +1,9 @@
 <?php
 
-namespace Castelo;
+namespace App;
 
-use Carbon\Carbon;
-use Castelo\Support\DateHelper;
-use Castelo\Support\DateHelperBrazilOutput;
+use App\Support\DateHelper;
+use App\Support\DateHelperBrazilOutput;
 use Illuminate\Database\Eloquent\Model;
 
 class Atividade extends Model
@@ -12,32 +11,27 @@ class Atividade extends Model
     protected $fillable = ['disciplina', 'descricao', 'entrega'];
     protected $dates = ['entrega'];
 
-    /**
-     * @param $date
-     */
-    public function setEntregaAttribute($date)
-    {
-        $this->attributes['entrega'] = Carbon::createFromFormat('Y-m-d', $date);
-    }
-
     public function getDateInSmartOutputAttribute()
     {
         return (new DateHelper($this->entrega))->output(new DateHelperBrazilOutput());
     }
 
-    public function scopeIsActual($query)
+    public function feitas()
     {
-        return $query->where('entrega', '>=', Carbon::now()->subDay());
+        return $this->belongsToMany(User::class, 'atividades_feitas');
     }
 
-    public function scopeIsOld($query)
+    public function scopeDone($query, $id)
     {
-        return $query->where('entrega', '<=', Carbon::now()->subDay());
+        return $query->whereHas('feitas', function ($q) use ($id) {
+            $q->where('user_id', $id);
+        });
     }
 
-    public function scopeForTomorrow($query)
+    public function scopePending($query, $id)
     {
-        return $query->where('entrega', '>=', Carbon::parse('tomorrow')->startOfDay())
-                     ->where('entrega', '<=', Carbon::parse('tomorrow')->endOfDay());
+        return $query->whereDoesntHave('feitas', function ($q) use ($id) {
+            $q->where('user_id', $id);
+        });
     }
 }

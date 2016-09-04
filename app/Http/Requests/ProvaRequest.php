@@ -1,8 +1,10 @@
 <?php
 
-namespace Castelo\Http\Requests;
+namespace App\Http\Requests;
 
-class ProvaRequest extends Request
+use Illuminate\Foundation\Http\FormRequest;
+
+class ProvaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +24,9 @@ class ProvaRequest extends Request
     public function rules()
     {
         return [
-            'disciplina'       => 'required',
-            'data'             => 'required|date',
-            'descricao'        => 'required',
+            'disciplina'    => 'required',
+            'data'          => 'required|date',
+            'descricao'     => 'required',
         ];
     }
 }
