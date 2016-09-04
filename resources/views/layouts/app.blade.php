@@ -1,10 +1,3 @@
-@section ('ads')
-	<center>
-		<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6934296242213124" data-ad-slot="6255245692" data-ad-format="auto"></ins>
-		<script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
-	</center>
-@endsection
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,7 +104,7 @@
     </nav>
 
     @yield('content')
-    @yield('ads')
+    @include('layouts._ads')
 
     <div class="navbar-fixed-bottom text-center text-muted">
         <div class="container-fluid badge alert-warning">

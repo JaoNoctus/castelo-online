@@ -103,6 +103,8 @@
                     <a href="{{ route('boletim.index') }}">Boletim</a>
                     <a href="{{ config('castelo.drive') }}" target="_blank">Caderno Virtual</a>
                 </div>
+                <br />
+                @include('layouts._ads')
             </div>
         </div>
         <div class="navbar-fixed-bottom text-center text-muted">
