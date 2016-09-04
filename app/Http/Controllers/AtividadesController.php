@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Atividade;
+use App\Http\Requests\AtividadeRequest;
 use Auth;
 use Illuminate\Support\Facades\Input;
-use App\Http\Requests\AtividadeRequest;
 
 class AtividadesController extends Controller
 {
