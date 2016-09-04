@@ -1,0 +1,7 @@
+{
+  "name": "Castelo Online",
+  "short_name": "castelo",
+  "start_url": "/",
+  "display": "standalone",
+  "gcm_sender_id": "683087132714"
+}
