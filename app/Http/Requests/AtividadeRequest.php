@@ -1,8 +1,10 @@
 <?php
 
-namespace Castelo\Http\Requests;
+namespace App\Http\Requests;
 
-class AtividadeRequest extends Request
+use Illuminate\Foundation\Http\FormRequest;
+
+class AtividadeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +24,9 @@ class AtividadeRequest extends Request
     public function rules()
     {
         return [
-            'disciplina'       => 'required',
-            'entrega'          => 'required|date',
-            'descricao'        => 'required',
+            'disciplina'    => 'required',
+            'entrega'       => 'required|date',
+            'descricao'     => 'required',
         ];
     }
 }

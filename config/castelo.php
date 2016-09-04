@@ -15,42 +15,8 @@ return [
         'Filosofia',
     ],
 
-    // 4 hours
-    'cache_time' => 4 * 60,
+    'drive' => 'https://drive.google.com/open?id=0B-cwefcz8AzjRzE0b2diTlZvaTQ',
 
-    /*
-    |--------------------------------------------------------------------------
-    | Schedule Time
-    |--------------------------------------------------------------------------
-    |
-    | Here you configure the times for tasks to be performed.
-    |
-    */
-
-    'schedule' => [
-        'notify' => [
-            // every day, 8am and 2pm
-            'atividade' => '0 8,14 * * *',
-            // every day, 8am and 6pm
-            'prova' => '0 7,18 * * *',
-        ],
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | OneSignal Configurations
-    |--------------------------------------------------------------------------
-    |
-    */
-
-    'onesignal' => [
-        'app_key' => env('ONESIGNAL_APP_KEY'),
-        'api_key' => env('ONESIGNAL_API_KEY'),
-        'for'     => [
-            'player_ids'        => ['5a5ddb73-bf71-4239-be17-0489b3d766da'],
-            'included_segments' => ['All'],
-        ],
-        'send_for' => 'included_segments',
-    ],
+    'default_profile_url' => 'http://i.imgur.com/TqfuH5P.png',
 
 ];

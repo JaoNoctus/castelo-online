@@ -1,37 +1,68 @@
-@extends('layouts.site')
+@extends('layouts.app')
 
 @section('content')
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h1 class="panel-title">Login</h1>
-        </div>
-        <div class="panel-body">
-            @if (count($errors) > 0)
-                @foreach ($errors->all() as $error)
-                    <div class="alert alert-dismissible alert-danger">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        {{ $error }}
-                    </div>
-                @endforeach
-            @endif
-            {!! Form::open(['route' => 'auth.login.post']) !!}
-                {!! csrf_field() !!}
-                <div class="form-group label-floating">
-                    {!! Form::label('email', 'E-mail', ['class' => 'control-label']) !!}
-                    {!! Form::email('email', old('email'), ['class' => 'form-control', 'autofocus' => TRUE]) !!}
-                    <p class="help-block">ex: nome@provedor.com</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Login</div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+                        {{ csrf_field() }}
+
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">E-mail</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label">Senha</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="password" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember"> Mantenha-me conectado
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Acessar
+                                </button>
+
+                                <a class="btn btn-link" href="{{ url('/password/reset') }}">
+                                    Esqueci minha senha
+                                </a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group label-floating">
-                    {!! Form::label('password', 'Senha', ['class' => 'control-label']) !!}
-                    {!! Form::password('password', ['class' => 'form-control']) !!}
-                    <p class="help-block">ex: 123456</p>
-                </div>
-                {!! link_to_route('password.email.get', 'Recuperar senha', [], ['class' => 'pull-left btn btn-primary']) !!}
-                <div class="checkbox pull-right">
-                    <label>{!! Form::checkbox('remember') !!} Lembrar</label>
-                    {!! Form::submit('Acessar', ['class' => 'btn btn-primary']) !!}
-                </div>
-            {!! Form::close() !!}
+            </div>
         </div>
     </div>
+</div>
 @endsection

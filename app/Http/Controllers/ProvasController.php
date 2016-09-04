@@ -1,70 +1,70 @@
 <?php
 
-namespace Castelo\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Artisan;
-use Cache;
-use Castelo\Http\Requests\ProvaRequest;
-use Castelo\Prova;
+use App\Http\Requests\ProvaRequest;
+use App\Prova;
+use Illuminate\Support\Facades\Input;
 
 class ProvasController extends Controller
 {
-    protected $home = 'provas.index';
-
-    public function __construct()
-    {
-        $this->middleware('needsPermission:provas.create')->only('create');
-    }
-
     public function index()
     {
-        $data['provas'] = Cache::remember('provas', config('castelo.cache_time'), function () {
-            return Prova::isActual()->orderBy('data')->get();
-        });
+        switch (Input::get('list')) {
+            case 'old':
+                $provas = Prova::oldOnly()->orderBy('data')->get();
+                break;
+
+            default:
+                $provas = Prova::actualOnly()->orderBy('data')->get();
+                break;
+        }
+
+        $data['provas'] = $provas;
 
         return view('provas.index', $data);
     }
 
     public function create()
     {
-        return view('provas.create');
+        $disciplinas = collect(config('castelo.disciplinas'))->sort();
+        $data['disciplinas'] = $disciplinas->combine($disciplinas);
+
+        return view('provas.create', $data);
     }
 
     public function store(ProvaRequest $request)
     {
         Prova::create($request->all());
 
-        Cache::forget('provas');
+        return redirect()->route('provas.index');
+    }
 
-        Artisan::call('notify', [
-            'title'   => 'PROVA CADASTRADA',
-            'content' => 'Clique para ver',
-            'url'     => 'https://castelo.noctus.org/provas',
-        ]);
-
-        return redirect()->route($this->home);
+    public function show(Prova $prova)
+    {
+        return view('provas.show', compact('prova'));
     }
 
     public function edit(Prova $prova)
     {
-        return view('provas.edit', compact('prova'));
+        $disciplinas = collect(config('castelo.disciplinas'))->sort();
+        $data['disciplinas'] = $disciplinas->combine($disciplinas);
+        $data['prova'] = $prova;
+
+        return view('provas.edit', $data);
     }
 
     public function update(ProvaRequest $request, Prova $prova)
     {
         $prova->update($request->all());
 
-        Cache::forget('provas');
-
-        return redirect()->route($this->home);
+        return redirect()->route('provas.index');
     }
 
     public function destroy(Prova $prova)
     {
         $prova->delete();
 
-        Cache::forget('provas');
-
-        return redirect()->route($this->home);
+        return redirect()->back();
     }
 }

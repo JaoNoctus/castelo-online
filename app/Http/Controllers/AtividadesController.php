@@ -1,60 +1,65 @@
 <?php
 
-namespace Castelo\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Artisan;
-use Cache;
-use Castelo\Atividade;
-use Castelo\Http\Requests\AtividadeRequest;
+use App\Atividade;
+use App\Http\Requests\AtividadeRequest;
+use Auth;
+use Illuminate\Support\Facades\Input;
 
 class AtividadesController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('needsPermission:atividades.create')->only('create');
-        $this->middleware('needsPermission:atividades.edit')->only('edit', 'update');
-        $this->middleware('needsPermission:atividades.destroy')->only('destroy');
-    }
-
     public function index()
     {
-        $data['atividades'] = Cache::remember('atividades', config('castelo.cache_time'), function () {
-            return Atividade::/*IsActual()->*/orderBy('entrega')->get();
-        });
+        switch (Input::get('list')) {
+            case 'done':
+                $atividades = Atividade::done(Auth::user()->id)->get();
+                break;
 
-        return view('atividades.index', $data);
+            case 'pending':
+                $atividades = Atividade::pending(Auth::user()->id)->get();
+                break;
+
+            default:
+                $atividades = Atividade::all();
+                break;
+        }
+
+        return view('atividades.index', compact('atividades'));
     }
 
     public function create()
     {
-        return view('atividades.create');
+        $disciplinas = collect(config('castelo.disciplinas'))->sort();
+        $data['disciplinas'] = $disciplinas->combine($disciplinas);
+
+        return view('atividades.create', $data);
     }
 
     public function store(AtividadeRequest $request)
     {
         Atividade::create($request->all());
 
-        Cache::forget('atividades');
+        return redirect()->route('atividades.index');
+    }
 
-        Artisan::call('notify', [
-            'title'   => 'ATIVIDADE CADASTRADA',
-            'content' => 'Clique para ver',
-            'url'     => 'https://castelo.noctus.org/atividades',
-        ]);
-
-        return redirect()->route('atividades.index')->with('status', 'Atividade adicionada com sucesso!');
+    public function show(Atividade $atividade)
+    {
+        return view('atividades.show', compact('atividade'));
     }
 
     public function edit(Atividade $atividade)
     {
-        return view('atividades.edit', compact('atividade'));
+        $disciplinas = collect(config('castelo.disciplinas'))->sort();
+        $data['disciplinas'] = $disciplinas->combine($disciplinas);
+        $data['atividade'] = $atividade;
+
+        return view('atividades.edit', $data);
     }
 
     public function update(AtividadeRequest $request, Atividade $atividade)
     {
         $atividade->update($request->all());
-
-        Cache::forget('atividades');
 
         return redirect()->route('atividades.index');
     }
@@ -63,8 +68,14 @@ class AtividadesController extends Controller
     {
         $atividade->delete();
 
-        Cache::forget('atividades');
+        return redirect()->back();
+    }
 
-        return redirect()->route('atividades.index');
+    public function done(Atividade $atividade)
+    {
+        $user = Auth::user();
+        $atividade->feitas()->toggle($user);
+
+        return redirect()->back();
     }
 }
