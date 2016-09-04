@@ -114,7 +114,6 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
     @yield('scripts')
 </body>
