@@ -6,19 +6,19 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading text-uppercase">
-                        {{ $atividade->disciplina }}
+                        {{ $prova->disciplina }}
                         <div class="pull-right">
                             <div class="btn-group">
-                                <a href="{{ route('atividades.index') }}" class="btn btn-xs btn-default text-uppercase">Voltar</a>
+                                <a href="{{ route('provas.index') }}" class="btn btn-xs btn-default text-uppercase">Voltar</a>
                             </div>
                         </div>
                     </div>
                     <div class="panel-body">
                         <span class="pull-right text-center">
-                            <b>ENTREGA</b><br />
-                            <span class="badge">{{ $atividade->dateInSmartOutput }}</span>
+                            <b>DATA</b><br />
+                            <span class="badge">{{ $prova->data->format('d/m/Y') }}</span>
                         </span>
-                        {!! $atividade->descricao !!}
+                        {!! $prova->descricao !!}
                     </div>
                 </div>
             </div>

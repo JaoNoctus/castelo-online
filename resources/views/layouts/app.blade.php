@@ -70,7 +70,7 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                <img src="http://twitter.com/jaonoctus/profile_image?size=normal" height="35px" width="35px" class="navbar-avatar" />
+                                <img src="{{ Auth::user()->picture_url !== NULL ? Auth::user()->picture_url : config('castelo.default_profile_url')}}" height="32px" width="32px" class="navbar-avatar" />
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 

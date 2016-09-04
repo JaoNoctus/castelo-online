@@ -17,4 +17,6 @@ return [
 
     'drive' => 'https://drive.google.com/open?id=0B-cwefcz8AzjRzE0b2diTlZvaTQ',
 
+    'default_profile_url' => 'http://i.imgur.com/TqfuH5P.png',
+
 ];

@@ -88,5 +88,10 @@
                 </div>
             </div>
         </div>
+        <div class="navbar-fixed-bottom text-center text-muted">
+            <div class="container-fluid badge alert-warning">
+                Developed by <a href="https://noctus.org" target="_blank" class="alert-link">Studio Noctus</a>
+            </div>
+        </div>
     </body>
 </html>
