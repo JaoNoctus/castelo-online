@@ -3,13 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Atividade;
+use Auth;
+use Illuminate\Support\Facades\Input;
 use App\Http\Requests\AtividadeRequest;
 
 class AtividadesController extends Controller
 {
     public function index()
     {
-        $atividades = Atividade::all();
+        switch (Input::get('list')) {
+            case 'done':
+                $atividades = Atividade::done(Auth::user()->id)->get();
+                break;
+
+            case 'pending':
+                $atividades = Atividade::pending(Auth::user()->id)->get();
+                break;
+
+            default:
+                $atividades = Atividade::all();
+                break;
+        }
 
         return view('atividades.index', compact('atividades'));
     }
@@ -29,23 +43,39 @@ class AtividadesController extends Controller
         return redirect()->route('atividades.index');
     }
 
-    public function show($id)
+    public function show(Atividade $atividade)
     {
-        //
+        return view('atividades.show', compact('atividade'));
     }
 
-    public function edit($id)
+    public function edit(Atividade $atividade)
     {
-        //
+        $disciplinas = collect(config('castelo.disciplinas'))->sort();
+        $data['disciplinas'] = $disciplinas->combine($disciplinas);
+        $data['atividade'] = $atividade;
+
+        return view('atividades.edit', $data);
     }
 
-    public function update(Request $request, $id)
+    public function update(AtividadeRequest $request, Atividade $atividade)
     {
-        //
+        $atividade->update($request->all());
+
+        return redirect()->route('atividades.index');
     }
 
-    public function destroy($id)
+    public function destroy(Atividade $atividade)
     {
-        //
+        $atividade->delete();
+
+        return redirect()->back();
+    }
+
+    public function done(Atividade $atividade)
+    {
+        $user = Auth::user();
+        $atividade->feitas()->toggle($user);
+
+        return redirect()->back();
     }
 }

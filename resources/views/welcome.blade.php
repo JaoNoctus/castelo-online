@@ -11,6 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
+        <link href="/css/app.css" rel="stylesheet">
         <style>
             html, body {
                 background-color: #fff;
@@ -78,11 +79,12 @@
                     {{ config('app.name') }}
                 </div>
 
-                <div class="links">
+                <div class="links hidden-xs">
                     <a href="{{ route('atividades.index') }}">Atividades</a>
-                    <a href="#">Provas</a>
-                    <a href="#">Horários</a>
-                    <a href="#">Caderno Virtual</a>
+                    <a href="{{ route('provas.index') }}">Provas</a>
+                    <a href="{{ route('horarios.index') }}">Horários</a>
+                    <a href="{{ route('boletim.index') }}">Boletim</a>
+                    <a href="{{ config('castelo.drive') }}" target="_blank">Caderno Virtual</a>
                 </div>
             </div>
         </div>

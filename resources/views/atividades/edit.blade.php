@@ -6,15 +6,15 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading text-uppercase">
-                        Adicionar atividade
+                        Editar atividade
                         <div class="btn-group pull-right">
                             <a href="{{ route('atividades.index') }}" class="btn btn-xs btn-default text-uppercase">Voltar</a>
                         </div>
                     </div>
 
                     <div class="panel-body">
-                        {!! Form::open(['route' => 'atividades.store', 'class' => 'form-horizontal']) !!}
-                            @include('atividades._form', ['date' => \Carbon\Carbon::now()])
+                        {!! Form::model($atividade, ['route' => ['atividades.update', $atividade], 'method' => 'put', 'class' => 'form-horizontal']) !!}
+                            @include('atividades._form', ['date' => $atividade->entrega])
                         {!! Form::close() !!}
                     </div>
                 </div>

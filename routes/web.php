@@ -21,5 +21,8 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::resource('atividades', 'AtividadesController');
+    Route::resource('provas', 'ProvasController');
+    Route::get('atividades/done/{atividade}', 'AtividadesController@done')->name('atividades.done');
     Route::resource('horarios', 'HorariosController', ['only' => 'index']);
+    Route::resource('boletim', 'BoletimController', ['only' => 'index']);
 });

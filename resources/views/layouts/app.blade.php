@@ -1,3 +1,10 @@
+@section ('ads')
+	<center>
+		<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6934296242213124" data-ad-slot="6255245692" data-ad-format="auto"></ins>
+		<script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+	</center>
+@endsection
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,10 +54,11 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ route('atividades.index') }}"><i class="fa fa-pencil-square-o"></i> Atividades</a></li>
-                    <li><a href="{{ route('atividades.index') }}"><i class="fa fa-newspaper-o"></i> Provas</a></li>
-                    <li><a href="{{ route('horarios.index') }}"><i class="fa fa-clock-o"></i> Horários</a></li>
-                    <li><a href="{{ route('atividades.index') }}"><i class="fa fa-folder-o"></i> Caderno Virtual</a></li>
+                    <li><a href="{{ route('atividades.index') }}"><i class="fa fa-files-o"></i> Atividades</a></li>
+                    <li><a href="{{ route('provas.index') }}"><i class="fa fa-file-text-o"></i> Provas</a></li>
+                    <li><a href="{{ route('horarios.index') }}"><i class="fa fa-calendar"></i> Horários</a></li>
+                    <li><a href="{{ route('boletim.index') }}"><i class="fa fa-bar-chart-o"></i> Boletim</a></li>
+                    <li><a href="{{ config('castelo.drive') }}" target="_blank"><i class="fa fa-folder-open-o"></i> Caderno Virtual</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -62,7 +70,7 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                <img src="https://twitter.com/jaonoctus/profile_image?size=normal" height="35px" width="35px" class="navbar-avatar" />
+                                <img src="http://twitter.com/jaonoctus/profile_image?size=normal" height="35px" width="35px" class="navbar-avatar" />
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
@@ -87,10 +95,18 @@
     </nav>
 
     @yield('content')
+    @yield('ads')
+
+    <div class="navbar-fixed-bottom text-center text-muted">
+        <div class="container-fluid badge alert-warning">
+            Developed by <a href="https://noctus.org" target="_blank" class="alert-link">Studio Noctus</a>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
-    
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
     @yield('scripts')
 </body>
 </html>
