@@ -19,9 +19,11 @@
                 <div class="panel panel-default">
                     <div class="panel-heading text-uppercase">
                         Atividades
-                        <div class="btn-group pull-right">
-                            <a href="{{ route('atividades.create') }}" class="btn btn-xs btn-default">Adicionar</a>
-                        </div>
+                        @is('admin')
+                            <div class="btn-group pull-right">
+                                <a href="{{ route('atividades.create') }}" class="btn btn-xs btn-default">Adicionar</a>
+                            </div>
+                        @endis
                     </div>
 
                     <div class="panel-body">
@@ -52,22 +54,24 @@
                                             <td style="vertical-align: middle;" class="text-right">
                                                 <div class="btn-group">
                                                     <a class="btn btn-sm btn-default" href="{{ route('atividades.show', $atividade) }}">Visualizar</a>
-                                                    <a class="btn btn-sm btn-default" data-toggle="dropdown" href="#">
-                                                        <span class="fa fa-caret-down"></span>
-                                                    </a>
-                                                    <ul class="dropdown-menu dropdown-menu-right">
-                                                        <li><a href="{{ route('atividades.edit', $atividade) }}">Editar</a></li>
-                                                        <li>
-                                                            <a href="{{ route('atividades.destroy', $atividade) }}"
-                                                                onclick="event.preventDefault();
-                                                                         document.getElementById('destroy-form{{ $atividade->id }}').submit();">
-                                                                Excluir
-                                                            </a>
+                                                    @is('admin')
+                                                        <a class="btn btn-sm btn-default" data-toggle="dropdown" href="#">
+                                                            <span class="fa fa-caret-down"></span>
+                                                        </a>
+                                                        <ul class="dropdown-menu dropdown-menu-right">
+                                                            <li><a href="{{ route('atividades.edit', $atividade) }}">Editar</a></li>
+                                                            <li>
+                                                                <a href="{{ route('atividades.destroy', $atividade) }}"
+                                                                    onclick="event.preventDefault();
+                                                                             document.getElementById('destroy-form{{ $atividade->id }}').submit();">
+                                                                    Excluir
+                                                                </a>
 
-                                                            {!! Form::open(['route' => ['atividades.destroy', $atividade], 'id' => 'destroy-form' . $atividade->id, 'method' => 'DELETE']) !!}
-                                                            {!! Form::close() !!}
-                                                    </li>
-                                                    </ul>
+                                                                {!! Form::open(['route' => ['atividades.destroy', $atividade], 'id' => 'destroy-form' . $atividade->id, 'method' => 'DELETE']) !!}
+                                                                {!! Form::close() !!}
+                                                            </li>
+                                                        </ul>
+                                                    @endis
                                                 </div>
                                             </td>
                                         </tr>

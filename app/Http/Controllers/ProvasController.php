@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Input;
 
 class ProvasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('needsRole:admin')->only(['create', 'edit']);
+    }
+
     public function index()
     {
         switch (Input::get('list')) {
