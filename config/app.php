@@ -168,6 +168,7 @@ return [
          */
 
         Collective\Html\HtmlServiceProvider::class,
+        Artesaos\Defender\Providers\DefenderServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -226,6 +227,7 @@ return [
         'View'         => Illuminate\Support\Facades\View::class,
         'Form'         => Collective\Html\FormFacade::class,
         'Html'         => Collective\Html\HtmlFacade::class,
+        'Defender'     => Artesaos\Defender\Facades\Defender::class,
 
     ],
 

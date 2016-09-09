@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Input;
 
 class AtividadesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('needsRole:admin')->only(['create', 'edit']);
+    }
+
     public function index()
     {
         switch (Input::get('list')) {

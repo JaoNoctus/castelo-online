@@ -12,5 +12,6 @@ A simple app to manage homework
 ## Uses
 - [laravel/laravel (v5.3)](https://github.com/laravel/laravel)
 - [LaravelCollective/html (v5.3)](https://github.com/LaravelCollective/html)
+- [artesaos/defender (v0.6)](https://github.com/artesaos/defender)
 - [twbs/bootstrap (v4.5.7)](https://github.com/twbs/bootstrap)
 - [Summernote (v0.8.2)](https://github.com/summernote/summernote)

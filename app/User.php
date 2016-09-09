@@ -2,12 +2,13 @@
 
 namespace App;
 
+use Artesaos\Defender\Traits\HasDefender;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasDefender;
 
     /**
      * The attributes that are mass assignable.
