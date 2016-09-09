@@ -12,7 +12,7 @@ class ProvasController extends Controller
     {
         $this->middleware('needsRole:admin')->only(['create', 'edit']);
     }
-    
+
     public function index()
     {
         switch (Input::get('list')) {
