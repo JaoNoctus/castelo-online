@@ -10,21 +10,21 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-	<link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="apple-touch-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="apple-touch-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png">
-	<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
-	<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
-	<link rel="manifest" href="manifest.json">
-	<link rel="mask-icon" href="safari-pinned-tab.svg" color="#005196">
-	<meta name="apple-mobile-web-app-title" content="Terceirão">
-	<meta name="application-name" content="Terceirão">
-	<meta name="msapplication-TileColor" content="#ff0000">
-	<meta name="theme-color" content="#005196">
+    <link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="manifest.json">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#005196">
+    <meta name="apple-mobile-web-app-title" content="Terceirão">
+    <meta name="application-name" content="Terceirão">
+    <meta name="msapplication-TileColor" content="#eeeeee">
+    <meta name="theme-color" content="#eeeeee">
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -36,9 +36,9 @@
     <!-- Scripts -->
     <script src="https://use.fontawesome.com/fe105ef4ac.js"></script>
     <script>
-        window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-        ]); ?>
+    window.Laravel = <?php echo json_encode([
+        'csrfToken' => csrf_token(),
+    ]); ?>
     </script>
 </head>
 <body>
@@ -66,8 +66,7 @@
                     <li><a href="{{ route('atividades.index') }}"><i class="fa fa-files-o"></i> Atividades</a></li>
                     <li><a href="{{ route('provas.index') }}"><i class="fa fa-file-text-o"></i> Provas</a></li>
                     <li><a href="{{ route('horarios.index') }}"><i class="fa fa-calendar"></i> Horários</a></li>
-                    <li><a href="{{ route('boletim.index') }}"><i class="fa fa-bar-chart-o"></i> Boletim</a></li>
-                    <li><a href="{{ config('castelo.drive') }}" target="_blank"><i class="fa fa-folder-open-o"></i> Caderno Virtual</a></li>
+                    <li><a href="{{ config('castelo.drive') }}" target="_blank"><i class="fa fa-folder-open-o"></i> Caderno</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -86,35 +85,35 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li>
                                     <a href="{{ url('/logout') }}"
-                                        onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                        Sair
-                                    </a>
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    Sair
+                                </a>
 
-                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
-                    @endif
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    @yield('content')
-    @include('layouts._ads')
-
-    <div class="navbar-fixed-bottom text-center text-muted">
-        <div class="container-fluid badge alert-warning">
-            Developed by <a href="https://noctus.org" target="_blank" class="alert-link">Studio Noctus</a>
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+            </ul>
         </div>
     </div>
+</nav>
 
-    <!-- Scripts -->
-    <script src="/js/app.js"></script>
+@yield('content')
+@include('layouts._ads')
 
-    @yield('scripts')
+<div class="navbar-fixed-bottom text-center text-muted">
+    <div class="container-fluid badge alert-warning">
+        Developed by <a href="https://noctus.org" target="_blank" class="alert-link">Studio Noctus</a>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="/js/app.js"></script>
+
+@yield('scripts')
 </body>
 </html>
