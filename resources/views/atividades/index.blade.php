@@ -37,7 +37,7 @@
                                     <tr>
                                         <th width="8%"> </th>
                                         <th width="20%">Entrega</th>
-                                        <th>Disciplina</th>
+                                        <th width="20%">Disciplina</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -51,9 +51,12 @@
                                             </td>
                                             <td style="vertical-align: middle;">{{ $atividade->dateInSmartOutput }}</td>
                                             <td style="vertical-align: middle;">{{ $atividade->disciplina }}</td>
-                                            <td style="vertical-align: middle;" class="text-right">
-                                                <div class="btn-group">
-                                                    <a class="btn btn-sm btn-default" href="{{ route('atividades.show', $atividade) }}">Visualizar</a>
+                                            <td style="vertical-align: middle;">
+                                                <span class="hidden-xs pull-left">
+                                                    {!! $atividade->descricao !!}
+                                                </span>
+                                                <div class="btn-group pull-right">
+                                                    <a class="btn btn-sm btn-default visible-xs" href="{{ route('atividades.show', $atividade) }}">Visualizar</a>
                                                     @is('admin')
                                                         <a class="btn btn-sm btn-default" data-toggle="dropdown" href="#">
                                                             <span class="fa fa-caret-down"></span>

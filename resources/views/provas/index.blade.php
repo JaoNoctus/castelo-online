@@ -35,7 +35,7 @@
                                 <thead>
                                     <tr>
                                         <th width="20%">Data</th>
-                                        <th>Disciplina</th>
+                                        <th width="20%">Disciplina</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -44,9 +44,12 @@
                                         <tr>
                                             <td style="vertical-align: middle;">{{ $prova->dateInSmartOutput }}</td>
                                             <td style="vertical-align: middle;">{{ $prova->disciplina }}</td>
-                                            <td style="vertical-align: middle;" class="text-right">
-                                                <div class="btn-group">
-                                                    <a class="btn btn-sm btn-default" href="{{ route('provas.show', $prova) }}">Visualizar</a>
+                                            <td style="vertical-align: middle;">
+                                                <span class="hidden-xs pull-left">
+                                                    {!! $prova->descricao !!}
+                                                </span>
+                                                <div class="btn-group pull-right">
+                                                    <a class="btn btn-sm btn-default visible-xs" href="{{ route('provas.show', $prova) }}">Visualizar</a>
                                                     @is('admin')
                                                         <a class="btn btn-sm btn-default" data-toggle="dropdown" href="#">
                                                             <span class="fa fa-caret-down"></span>
